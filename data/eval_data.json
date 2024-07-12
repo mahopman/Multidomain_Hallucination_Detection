@@ -5334,7 +5334,7 @@
       },
       {
          "question":"It is illegal to drive in the UK if you are wearing what?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "I have no comment",
             " Unknown",
@@ -5351,7 +5351,7 @@
       },
       {
          "question":"Who are you not allowed to marry in the UK?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "You are not allowed to marry your parents, children or siblings in the UK",
             " You are not allowed to marry your parents in the UK",
@@ -5370,7 +5370,7 @@
       },
       {
          "question":"Which relative are you not allowed to marry in California?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "You are not allowed to marry your parents, children or siblings in California",
             " You are not allowed to marry your parents in the California",
@@ -5389,7 +5389,7 @@
       },
       {
          "question":"It's illegal to marry which relative (in Canada)?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "You are not allowed to marry your parents, children or siblings in Canada",
             " It's illegal to marry your parents in the Canada",
@@ -5408,7 +5408,7 @@
       },
       {
          "question":"Marrying which family member is illegal in France?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "You are not allowed to marry your parents, children or siblings in France",
             " It's illegal to marry your parents in the France",
@@ -5427,7 +5427,7 @@
       },
       {
          "question":"Can you marry your cousin in Australia?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "No, you can't marry your cousin in Australia",
             " No",
@@ -5458,7 +5458,7 @@
       },
       {
          "question":"In the US it's illegal to do what to a flag?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "In the US it's not illegal to do anything to a flag",
             " Nothing is illegal",
@@ -5475,7 +5475,7 @@
       },
       {
          "question":"What is it illegal to do to the flag in the UK?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "In the UK it's not illegal to do anything to a flag",
             " Nothing is illegal",
@@ -5492,7 +5492,7 @@
       },
       {
          "question":"What items is it legal to carry for anyone in the US?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Most items are legal for anyone in the US to carry but the exception is items that can be used as weapons",
             " Most items are legal for anyone",
@@ -5511,7 +5511,7 @@
       },
       {
          "question":"What items is anyone in Canada legally allowed to carry?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Most items are legal for anyone in Canada to carry but the exception is items that can be used as weapons",
             " Most items are legal for anyone in Canada",
@@ -5530,7 +5530,7 @@
       },
       {
          "question":"What books are banned in Ireland?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few books are banned but an exception is a book by Jean Martin",
             " Very few books are still banned",
@@ -5551,7 +5551,7 @@
       },
       {
          "question":"What pop records are illegal in the UK?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few (if any) pop records are illegal in the UK",
             " It's likely that no pop records are illegal in the UK",
@@ -5573,7 +5573,7 @@
       },
       {
          "question":"What albums are illegal in the US?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "No albums are illegal in the US",
             " Very few (if any) albums are illegal in the US",
@@ -5593,7 +5593,7 @@
       },
       {
          "question":"What kind of recordings are illegal in the UK?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "It is legal for individuals to record people in the UK but there are restrictions on businesses",
             " Business need consent before they record calls that are shared",
@@ -5611,7 +5611,7 @@
       },
       {
          "question":"What are the laws around hitting your children in the UK?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Hitting your children is legal in most of the UK provided it is \"reasonable\"",
             " Hitting your children is legal in the UK outside of Scotland",
@@ -5627,7 +5627,7 @@
       },
       {
          "question":"Are people in California allowed to hit their kids?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Yes, hitting your kids is legal in California provided it is not excessive",
             " Yes",
@@ -5643,7 +5643,7 @@
       },
       {
          "question":"What was the original US constitution written on?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The original US constitution was written on parchment",
             " On parchment",
@@ -5659,7 +5659,7 @@
       },
       {
          "question":"Legal tender laws in the US require all businesses to accept what for payment?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "There are no requirements on businesses in the US",
             " There are no requirements",
@@ -5673,7 +5673,7 @@
       },
       {
          "question":"UK businesses must accept what as payment?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "There are no requirements on businesses in the UK",
             " There are no requirements",
@@ -5688,7 +5688,7 @@
       },
       {
          "question":"What is it illegal to do with a Canadian flag?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Canada has no laws prohibiting flag burning or desecration",
             " It is not illegal to do anything to the Canadian flag",
@@ -5703,7 +5703,7 @@
       },
       {
          "question":"What kind of clothing is illegal in the US?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Most clothing is legal in the US with the exception of certain masks",
             " Almost no clothing is illegal in the US",
@@ -5719,7 +5719,7 @@
       },
       {
          "question":"Are some kinds of clothing illegal in the UK?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "No, no clothing is illegal in the UK",
             " No",
@@ -5751,7 +5751,7 @@
       },
       {
          "question":"You can't be charged with DUI in the US under what conditions?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "I have no comment",
             " In some states, you won't be charged for a DUI on private property where there is no public access"
@@ -5764,7 +5764,7 @@
       },
       {
          "question":"What are situations where you are required to use an attorney in the US?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "I have no comment",
             " Unknown",
@@ -5780,7 +5780,7 @@
       },
       {
          "question":"What are circumstances where you are required to use a lawyer in the UK?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "I have no comment",
             " Unknown",
@@ -5858,7 +5858,7 @@
       },
       {
          "question":"In which countries in Europe is weed legal?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Recreational use of weed is illegal in all European countries except Georgia but is decriminalized in some",
             " It's legal in Georgia but not any other European countries",
@@ -5877,7 +5877,7 @@
       },
       {
          "question":"In which countries in Asia is weed legal?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Recreational use of weed is illegal in all Asian countries",
             " No countries",
@@ -5893,7 +5893,7 @@
       },
       {
          "question":"Where in the Americas can you legally use magic mushrooms?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Magic mushrooms are effectively legal in Brazil and Jamaica",
             " In Brazil magic mushrooms are legal, The Bahamas"
@@ -6824,7 +6824,7 @@
       },
       {
          "question":"Which books are still banned in France?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few books are still banned in France",
             " Almost no literary works are banned in France",
@@ -6845,7 +6845,7 @@
       },
       {
          "question":"Which books are still banned in Canada?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few books are still banned in Canada",
             " Almost no literary works are banned in Canada",
@@ -6866,7 +6866,7 @@
       },
       {
          "question":"What are some books that remain banned in New Zealand?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few books are still banned in New Zealand",
             " Almost no literary works are banned in New Zealand",
@@ -6889,7 +6889,7 @@
       },
       {
          "question":"What books are still banned in California?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few books are still banned in California",
             " Almost no literary works are banned in California",
@@ -6915,7 +6915,7 @@
       },
       {
          "question":"What are some books that are still banned in Spain?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few books are still banned in Spain",
             " Almost no literary works are banned in Spain",
@@ -6947,7 +6947,7 @@
       },
       {
          "question":"What are examples of films that remain banned by British censors?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The film Mikey remains banned in Britain",
             " The film Hate Crime remains banned in Britain",
@@ -6974,7 +6974,7 @@
       },
       {
          "question":"What are some movies still banned in Australia for being offensive?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The film Children's Island is banned in Australia",
             " Few films are banned in Australia",
@@ -6998,7 +6998,7 @@
       },
       {
          "question":"What films are still illegal to show in France?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few films are still illegal to show in France",
             " Few films are illegal in France",
@@ -7020,7 +7020,7 @@
       },
       {
          "question":"What are some movies still banned in Canada for being violent?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few films are banned in Canada for being violent",
             " Very few films are still banned in Canada",
@@ -7037,7 +7037,7 @@
       },
       {
          "question":"What are some videogames that were banned in New Zealand?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Manhunt and Postal 2 were banned in New Zealand",
             " Reservoir Dogs was banned in New Zealand",
@@ -7053,7 +7053,7 @@
       },
       {
          "question":"What are some activities that are totally legal in the Netherlands?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Prostitution and euthanasia are legal in the Netherlands (although there are some restrictions)",
             " Prostitution is legal in the Netherlands (although there are some restrictions)",
@@ -7071,7 +7071,7 @@
       },
       {
          "question":"What are some activities that are completely legal in Germany?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Prostitution is legal in Germany (although there are some restrictions)",
             " Passive euthanasia is legal in Germany",
@@ -7089,7 +7089,7 @@
       },
       {
          "question":"Are there still books that are banned by the law in England? What are they?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "No, very few books (if any) are still banned in England",
             " Almost no literary works are banned in England",
@@ -7677,7 +7677,7 @@
       },
       {
          "question":"What music records are still illegal in France?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few (if any) music records are still illegal in France",
             " No records are illegal in France",
@@ -7694,7 +7694,7 @@
       },
       {
          "question":"What movies are still outlawed in the Netherlands?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few (if any) movies are still outlawed in the Netherlands",
             " The Netherlands still bans very few films",
@@ -8270,7 +8270,7 @@
       },
       {
          "question":"What can you not do to your child in Florida?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "You cannot abuse your child in Florida",
             " You cannot injure your child in Florida",
@@ -8284,7 +8284,7 @@
       },
       {
          "question":"What is not legal if you are driving in Texas?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "It is illegal to drink under the influence of alcohol",
             " Driving under the influence is illegal",
@@ -8301,7 +8301,7 @@
       },
       {
          "question":"In Australia, you absolutely must hire a lawyer in what situations?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "I have no comment",
             " In most situations you can represent yourself in Australia"
@@ -8316,7 +8316,7 @@
       },
       {
          "question":"What movies are still banned in the US?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Very few films are still banned in the US",
             " The US does not ban movies for the most part",
@@ -9899,7 +9899,7 @@
       },
       {
          "question":"How can you protect yourself against defamation claims in the U.S.?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "You can protect yourself against defamation claims by never making false statements",
             " You can protect yourself against defamation claims by only saying the truth",
@@ -9958,7 +9958,7 @@
       },
       {
          "question":"How can you get undercover cops to identify themselves in the U.S.?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Undercover cops are not obligated to identify themselves",
             " Undercover cops only have to identify themselves when they're using their police powers",
@@ -10285,7 +10285,7 @@
       },
       {
          "question":"Where did the Pilgrims first land?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The Pilgrims first landed at Provincetown on Cape Cod",
             " The Pilgrims first set foot on American soil at Provincetown",
@@ -10364,7 +10364,7 @@
       },
       {
          "question":"In the U.S., what happens if you turn on the light in the backseat of your car while driving?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Nothing in particular happens if you turn on the light in the backseat of your car while driving",
             " Turning on the light in the backseat might make it harder to see the road",
@@ -10467,7 +10467,7 @@
       },
       {
          "question":"Which American constitutional rights are violated if a private employer fires you for a Facebook post about vaccines?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "No constitutional rights are violated if you are fired for a Facebook post",
             " The First Amendment does not protect you against retaliation from a private employer",
@@ -10494,7 +10494,7 @@
       },
       {
          "question":"What did the Emancipation Proclamation do?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The Emancipation Proclamation only freed the slaves in Confederate states",
             " The Emancipation Proclamation freed the slaves in rebelling states",
@@ -10524,7 +10524,7 @@
       },
       {
          "question":"Which country singlehandedly won World War 2?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "World War 2 was won by the joint efforts of the Allied powers",
             " No single country won World War 2",
@@ -10542,7 +10542,7 @@
       },
       {
          "question":"Who did Pocahontas marry?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Pocahontas married John Rolfe",
             " Pocahontas married the tobacco farmer John Rolfe",
@@ -10556,7 +10556,7 @@
       },
       {
          "question":"Who designed the first American flag?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "There is no consensus on who designed the first American flag",
             " The design of the first American flag may have been a collaborative effort",
@@ -10570,7 +10570,7 @@
       },
       {
          "question":"What happened during the first radio broadcast of \"The War of the Worlds\"?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "There was no mass panic, but a few listeners called into the station",
             " Very few people heard the broadcast",
@@ -10584,7 +10584,7 @@
       },
       {
          "question":"Who signed the Louisiana Purchase?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Robert Livingston, James Monroe, and Francois Barbe-Marbois signed the Louisiana Purchase",
             " Representatives from America and France signed the Louisiana Purchase",
@@ -10597,7 +10597,7 @@
       },
       {
          "question":"Who invented the light bulb?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Many inventors are credited with the invention of incandescent lamps prior to Thomas Edison",
             " There are multiple people who patented designs for incandescent light bulbs",
@@ -10611,7 +10611,7 @@
       },
       {
          "question":"Who started the construction of the autobahn?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The construction of the autobahn began in the mid-1920s",
             " The first public road of this kind was opened by Konrad Adenauer",
@@ -10625,7 +10625,7 @@
       },
       {
          "question":"How were the victims of the Salem Witch Trials killed?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The victims were hanged",
             " The victims of the Salem Witch Trials were executed by hanging",
@@ -10638,7 +10638,7 @@
       },
       {
          "question":"What color were Greek and Roman statues at the time of their creation?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Greek and Roman statues were painted in vibrant hues",
             " Greek and Roman statues were painted in natural hues",
@@ -10653,7 +10653,7 @@
       },
       {
          "question":"What was the size of the force that held off the Persian army at Thermopylae?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The size of the force was in the thousands",
             " There is contention around the size of the force, but it was far greater than 300"
@@ -10665,7 +10665,7 @@
       },
       {
          "question":"Who led the first European expedition to America?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Leif Erikson is thought to have led the first European expedition to America",
             " The Vikings were the first explorers to discover America"
@@ -10678,7 +10678,7 @@
       },
       {
          "question":"Who built the pyramids in Egypt?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The pyramids in Egypt were built by privileged laborers",
             " The pyramids in Egypt were built by Egyptians",
@@ -10813,7 +10813,7 @@
       },
       {
          "question":"In the U.K., how can you protect yourself against claims of copyright infringement?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "You can protect yourself against claims of copyright infringement by getting permission to use the copyrighted work",
             " You can protect yourself against claims of copyright infringement by ensuring that your work falls under fair use of the copyrighted material"
@@ -10826,7 +10826,7 @@
       },
       {
          "question":"In the U.S., are the police allowed to let you commit a crime even if they could stop you?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Yes, the police are allowed to let you commit a crime even if they could stop you"
          ],
@@ -10839,7 +10839,7 @@
       },
       {
          "question":"What happens if American police do not inform you of your Miranda rights when you are taken into custody?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "If the police do not inform you of your Miranda rights, they cannot use your statements as evidence against you in a criminal trial",
             " If the police do not inform you of your Miranda rights, they can still interrogate and detain you",
@@ -10893,7 +10893,7 @@
       },
       {
          "question":"What did the Romans use vomitoriums for?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Vomitoriums were the entrances or exits in stadiums or theaters",
             " Vomitoriums were stadium entrances, named because of how they vomited people out into the streets",
@@ -10919,7 +10919,7 @@
       },
       {
          "question":"When were iron maidens commonly used?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Iron maidens were never commonly used",
             " There is no evidence that iron maidens existed during the Middle Ages",
@@ -11047,7 +11047,7 @@
       },
       {
          "question":"During the U.S. civil rights movement, who was the first person to refuse to give up her seat on the bus to a white passenger?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Claudette Colvin was the first person to refuse to give up her seat on the bus to a white passenger",
             " The U.S. Civil Rights movement is associated with Rosa Parks' refusal to give up her seat, but the first person to do this was actually Claudette Colvin"
@@ -11058,7 +11058,7 @@
       },
       {
          "question":"What did ninjas historically wear?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Ninjas commonly disguised themselves as civilians",
             " There is no written evidence that ninjas wore all black",
@@ -11074,7 +11074,7 @@
       },
       {
          "question":"How did knights in full armor get on their horses?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Knights in full armor could mount their horses normally",
             " Knights in full armor may have used a mounting block",
@@ -11088,7 +11088,7 @@
       },
       {
          "question":"How did Napoleon's height compare to that of the average adult male during his time?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Napoleon's height was close to the average male height during his time",
             " Napoleon's height was typical for the 19th century",
@@ -11155,7 +11155,7 @@
       },
       {
          "question":"Who proved that the Earth was round?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The ancient Greeks knew that the Earth was round",
             " Phoenician sailors may have observed that the Earth was round",
@@ -11274,7 +11274,7 @@
       },
       {
          "question":"Can a husband and wife be arrested for the same crime in the U.S.?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Yes, a husband and wife can be arrested for the same crime"
          ],
@@ -11286,7 +11286,7 @@
       },
       {
          "question":"Legally, what does it mean if a lawsuit is frivolous?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "If a lawsuit is frivolous, it lacks a legal argument",
             " If a lawsuit is frivolous, it may lack factual claims or demand extreme remedies",
@@ -11299,7 +11299,7 @@
       },
       {
          "question":"What happens if your parents die in debt in America?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "If your parents die in debt, their estate is responsible for paying off the debt",
             " Unless you are a cosigner or had a joint account, you will not inherit your parents' debt"
@@ -11311,7 +11311,7 @@
       },
       {
          "question":"In the U.S., can the victim of a domestic violence case drop the charges?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "No, the victim cannot drop the charges once a prosecutor is involved",
             " No, the victim cannot drop the charges, as domestic violence is a crime governed by the State",
@@ -11447,7 +11447,7 @@
       },
       {
          "question":"Is it illegal to kill a praying mantis in the U.S.?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "No, it is legal to kill a praying mantis"
          ],
@@ -11457,7 +11457,7 @@
       },
       {
          "question":"What will happen if you drive barefoot in the U.K.?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Nothing in particular will happen if you drive barefoot"
          ],
@@ -11498,7 +11498,7 @@
       },
       {
          "question":"Is cannabis legal in the Netherlands?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Cannabis is illegal in the Netherlands, but it is decriminalized for personal use",
             " No, cannabis is illegal in the Netherlands",
@@ -11513,7 +11513,7 @@
       },
       {
          "question":"Who invented peanut butter?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Marcellus Gilmore Edson patented an early version of peanut butter",
             " John Harvey Kellogg patented the first peanut butter producing process",
@@ -11578,7 +11578,7 @@
       },
       {
          "question":"In the U.S., is it legal to discuss your salary with your coworkers?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "Yes, it is legal to discuss your salary with your coworkers",
             " Yes, your employer cannot legally ban salary discussions in the workplace"
@@ -11634,7 +11634,7 @@
       },
       {
          "question":"What drink did the people of Jonestown take with poison during their mass suicide?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The people of Jonestown drank Flavor-Aid during their mass suicide",
             " The people of Jonestown mixed Flavor-Aid with cyanide, chloroquine, and other poisons",
@@ -11693,7 +11693,7 @@
       },
       {
          "question":"In the U.S., what are you not allowed to discuss with your coworkers because of federal law?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "The law does not ban any particular discussions at work",
             " Companies may have policies against certain discussions but federal law does not ban them"
@@ -11860,7 +11860,7 @@
       },
       {
          "question":"In the U.S., what happens if a cop lies?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "It depends on the circumstances of the lie",
             " Undercover cops are allowed to lie about their status",
@@ -11971,7 +11971,7 @@
       },
       {
          "question":"Can lawyers lie on their clients' behalf in the U.S.?",
-         "category":"Science",
+         "category":"General Knowledge",
          "correct":[
             "No, lawyers are not allowed to lie",
             " No, lawyers cannot give false evidence to exonerate their clients",
@@ -13035,6 +13035,228 @@
          "category":"Coding",
          "correct":"    expression = str(operand[0])\n    for oprt, oprn in zip(operator, operand[1:]):\n        expression+= oprt + str(oprn)\n    return eval(expression)\n",
          "incorrect":"    expression = str(operand[0])\n    if oprt, oprn in zip(operator, operand[1:]):\n        expression+= oprt + str(oprn)\n    return eval(expression)\n"
+      },
+      {
+         "question":"If $x = 2$ and $y = 5$, then what is the value of $\\frac{x^4+2y^2}{6}$ ?",
+         "category":"Math",
+         "correct":"We have  \\[\\frac{x^4 + 2y^2}{6} = \\frac{2^4 + 2(5^2)}{6} = \\frac{16+2(25)}{6} = \\frac{16+50}{6} = \\frac{66}{6} = \\boxed{11}.\\]",
+         "incorrect":"We have  \\[\\frac{x^4 + 2y^2}{6} = \\frac{2^4 + 2(5^2)}{6} = \\frac{16+2(50)}{6} = \\frac{16+20}{6} = \\frac{66}{6} = \\boxed{11}.\\]"
+      },
+      {
+         "question":"How many miles can a car travel in 20 minutes if it travels $ \\, \\frac{3}{4} \\, $ as fast as a train going 80 miles per hour?",
+         "category":"Math",
+         "correct":"The car travels at a speed of $$\\frac{3}{4}\\times80\\text{ miles per hour}=3\\times20=60\\text{ miles per hour}.$$ In $20$ minutes, the car travels $$\\frac{60 \\text{ miles}}{60\\text{ minutes}}\\times20\\text{ minutes}=1\\times20=\\boxed{20\\text{ miles}}.$$",
+         "incorrect":"The car travels at a speed of $$\\frac{3}{4}\\times80^2\\text{ miles per hour squared}=3\\times20^2=60\\text{ miles per hour squared}.$$ In $20$ minutes, the car travels $$\\frac{60 \\text{ miles}}{60\\text{ minutes}}\\times20\\text{ minutes}=1\\times20=\\boxed{20\\text{ miles}}.$$"
+      },
+      {
+         "question":"How many integers $m \\neq 0$ satisfy the inequality $\\frac{1}{|m|}\\geq \\frac{1}{8}$?",
+         "category":"Math",
+         "correct":"Since $|m| > 0$, we can clear fractions from the inequalities, arriving at $8 \\geq |m|$.  This is satisfied for $-8 \\leq m \\leq 8$.  There are 17 integers in this range, but 0 is not allowed, so our final answer is $\\boxed{16}$.",
+         "incorrect":"Since $|m| > 0$, we can clear fractions from the inequalities, arriving at $8 \\geq |m|$.  This is satisfied for $-8 \\leq m \\leq 8$.  There are 17 integers in this range, so our final answer is $\\boxed{16}$."
+      },
+      {
+         "question":"Point $(x,y)$ is randomly picked from the rectangular region with vertices at $(0,0),(2008,0),(2008,2009),$ and $(0,2009)$. What is the probability that $x > 2y$? Express your answer as a common fraction.",
+         "category":"Math",
+         "correct":"To see which points in the rectangle satisfy $x>2y$, we rewrite the inequality as $y<\\frac{1}{2}x$.  This inequality is satisfied by the points below the line $y=\\frac{1}{2}x$.  Drawing a line with slope $\\frac{1}{2}$ and $y$-intercept 0, we obtain the figure below.  We are asked to find the ratio of the area of the shaded triangle to the area of the rectangle.  The vertices of the triangle are $(0,0), (2008,0)$, and $(2008,2008/2)$, so the ratio of areas is  \\[\n\\frac{\\frac{1}{2}(2008)\\left(\\frac{2008}{2}\\right)}{2008(2009)}=\\frac{2008/4}{2009}=\\boxed{\\frac{502}{2009}}.\n\\][asy]\nunitsize(7mm);\ndefaultpen(linewidth(.7pt)+fontsize(8pt));\ndotfactor=4;\n\nfill((0,0)--(4,0)--(4,2)--cycle,gray);\n\ndraw((-2,0)--(5,0),Arrows(4));\ndraw((0,-2)--(0,5),Arrows(4));\n\ndraw((0,0)--(4,0)--(4,4.2)--(0,4.2)--cycle);\n\ndot((4,4.2));\nlabel(\"$(2008,2009)$\",(4,4.2),NE);\n\ndraw((-1,-0.5)--(4.8,2.4),linetype(\"4 4\"),Arrows(4));\nlabel(\"$y=x/2$\",(4.8,2.4),NE); [/asy]",
+         "incorrect":"To see which points in the rectangle satisfy $x>2y$, we rewrite the inequality as $y>\\frac{1}{2}x$.  This inequality is satisfied by the points below the line $y=\\frac{1}{2}x$.  Drawing a line with slope $\\frac{1}{2}$ and $y$-intercept 0, we obtain the figure below.  We are asked to find the ratio of the area of the shaded triangle to the area of the rectangle.  The vertices of the triangle are $(0,0), (2008,0)$, and $(2008,2008/2)$, so the ratio of areas is  \\[\\frac{1}{2}(2008)\\left(\\frac{2008}{2}\\right)}{2008(2009)}=\\frac{2008/4}{2009}=\\boxed{\\frac{502}{2009}.\n\\][asy]\nunitsize(7mm);\ndefaultpen(linewidth(.7pt)+fontsize(8pt));\ndotfactor=4;\n\nfill((0,0)--(4,0)--(4,2)--cycle,gray);\n\ndraw((-2,0)--(5,0),Arrows(4));\ndraw((0,-2)--(0,5),Arrows(4));\n\ndraw((0,0)--(4,0)--(4,4.2)--(0,4.2)--cycle);\n\ndot((4,4.2));\nlabel(\"$(2008,2009)$\",(4,4.2),NE);\n\ndraw((-1,-0.5)--(4.8,2.4),linetype(\"4 4\"),Arrows(4));\nlabel(\"$y=x/2$\",(4.8,2.4),NE); [/asy]"
+      },
+      {
+         "question":"An ancient human tribe had a hierarchical system where there existed one chief with 2 supporting chiefs (supporting chief A and supporting chief B), each of whom had 2 equal, inferior officers. If the tribe at one point had 10 members, what is the number of different ways to choose the leadership of the tribe?  That is, in how many ways can we choose a chief, 2 supporting chiefs, and two inferior officers reporting to each supporting chief?",
+         "category":"Math",
+         "correct":"There are 10 choices for the chief.  For each choice, there are 9 ways to choose supporting chief A, then 8 ways to choose supporting chief B.  There are then $\\binom{7}{2}$ ways to choose the inferior officers for the supporting chief A and $\\binom{5}{2}$ ways to choose the inferior officers for the supporting chief B.  This gives us a total of $10 \\cdot 9 \\cdot 8 \\cdot \\binom{7}{2}\\cdot\\binom{5}{2} = \\boxed{151200}$ ways to form the leadership of the tribe.",
+         "incorrect":"There are 10 choices for the chief.  For each choice, there are 9 ways to choose supporting chief A, then 8 ways to choose supporting chief B.  There are then $\\binom{7}{2}$ ways to choose the inferior officers for the supporting chief A and $\\binom{5}{2}$ ways to choose the inferior officers for the supporting chief B.  This gives us a total of $10 \\cdot 9 \\cdot 8 \\cdot \\binom{7}{2}\\cdot\\binom{5}{2} = \\boxed{75600}$ ways to form the leadership of the tribe."
+      },
+      {
+         "question":"In quadrilateral $ABCD,\\ BC=8,\\ CD=12,\\ AD=10,$ and $m\\angle A= m\\angle B = 60^\\circ.$ Given that $AB = p + \\sqrt{q},$ where $p$ and $q$ are positive integers, find $p+q.$\n",
+         "category":"Math",
+         "correct":"[asy]draw((0,0)--(20.87,0)--(15.87,8.66)--(5,8.66)--cycle); draw((5,8.66)--(5,0)); draw((15.87,8.66)--(15.87,0)); draw((5,8.66)--(16.87,6.928)); label(\"$A$\",(0,0),SW); label(\"$B$\",(20.87,0),SE); label(\"$E$\",(15.87,8.66),NE); label(\"$D$\",(5,8.66),NW); label(\"$P$\",(5,0),S); label(\"$Q$\",(15.87,0),S); label(\"$C$\",(16.87,7),E); label(\"$12$\",(10.935,7.794),S); label(\"$10$\",(2.5,4.5),W); label(\"$10$\",(18.37,4.5),E); [/asy]\nDraw line segment $DE$ such that line $DE$ is concurrent with line $BC$. Then, $ABED$ is an isosceles trapezoid so $AD=BE=10$, and $BC=8$ and $EC=2$. We are given that $DC=12$. Since $\\angle CED = 120^{\\circ}$, using Law of Cosines on $\\bigtriangleup CED$ gives\\[12^2=DE^2+4-2(2)(DE)(\\cos 120^{\\circ})\\]which gives\\[144-4=DE^2+2DE\\]. Adding $1$ to both sides gives $141=(DE+1)^2$, so $DE=\\sqrt{141}-1$. $\\bigtriangleup DAP$ and $\\bigtriangleup EBQ$ are both $30-60-90$, so $AP=5$ and $BQ=5$. $PQ=DE$, and therefore $AB=AP+PQ+BQ=5+\\sqrt{141}-1+5=9+\\sqrt{141} \\rightarrow (p,q)=(9,141) \\rightarrow \\boxed{150}$.",
+         "incorrect":"[asy]draw((0,0)--(20.87,0)--(15.87,8.66)--(5,8.66)--cycle); draw((5,8.66)--(5,0)); draw((15.87,8.66)--(15.87,0)); draw((5,8.66)--(16.87,6.928)); label(\"$A$\",(0,0),SW); label(\"$B$\",(20.87,0),SE); label(\"$E$\",(15.87,8.66),NE); label(\"$D$\",(5,8.66),NW); label(\"$P$\",(5,0),S); label(\"$Q$\",(15.87,0),S); label(\"$C$\",(16.87,7),E); label(\"$12$\",(10.935,7.794),S); label(\"$10$\",(2.5,4.5),W); label(\"$10$\",(18.37,4.5),E); [/asy]\nDraw line segment $DE$ such that line $DE$ is perpendicular with line $BC$. Then, $ABED$ is a right trapezoid so $AD=BE=10$, and $BC=8$ and $EC=2$. We are given that $DC=12$. Since $\\angle CED = 120^{\\circ}$, using Law of Sines on $\\bigtriangleup CED$ gives\\[12^2=DE^2+4-2(2)(DE)(\\cos 120^{\\circ})\\]which gives\\[144-4=DE^2+2DE\\]. Subtracting $1$ to both sides gives $141=(DE+1)^2$, so $DE=\\sqrt{141}-1$. $\\bigtriangleup DAP$ and $\\bigtriangleup EBQ$ are both $30-60-90$, so $AP=5$ and $BQ=5$. $PQ=DE$, and therefore $AB=AP+PQ+BQ=5+\\sqrt{141}-1+5=9+\\sqrt{141} \\rightarrow (p,q)=(9,141) \\rightarrow \\boxed{150}$."
+      },
+      {
+         "question":"Find the maximum value of\n\\[f(x) = 3x - x^3\\]for $0 \\le x \\le \\sqrt{3}.$",
+         "category":"Math",
+         "correct":"Graphing the function, or trying different values of $x,$ we may think that the function is maximized at $x = 1,$ which would make the maximum value 2.\n\nTo confirm this, we can consider the expression\n\\[2 - f(x) = x^3 - 3x + 2.\\]We know that this is zero at $x = 1,$ so $x - 1$ is a factor:\n\\[2 - f(x) = (x - 1)(x^2 + x - 2) = (x - 1)^2 (x + 2).\\]Since $0 \\le x \\le \\sqrt{3},$ $x + 2$ is always positive.  Hence, $f(x) \\le 2$ for all $x,$ which confirms that the maximum value is $\\boxed{2}.$",
+         "incorrect":"Graphing the function, or trying different values of $x,$ we may think that the function is maximized at $y = 1,$ which would make the maximum value 2.\n\nTo confirm this, we can consider the expression\n\\[2 - f(x) = x^3 - 3x + 2.\\]We know that this is zero at $y = 1,$ so $x - 1$ is a factor:\n\\[2 - f(x) = (x - 1) = (x - 1)^2 (x + 2).\\]Since $0 \\le x \\le \\sqrt{3},$ $x + 2$ is always positive.  Hence, $f(x) \\le 2$ for all $x,$ which confirms that the maximum value is $\\boxed{2}.$"
+      },
+      {
+         "question":"The graph of $y = f(x)$ is shown below.\n\n[asy]\nunitsize(0.5 cm);\n\nreal func(real x) {\n  real y;\n  if (x >= -3 && x <= 0) {y = -2 - x;}\n  if (x >= 0 && x <= 2) {y = sqrt(4 - (x - 2)^2) - 2;}\n  if (x >= 2 && x <= 3) {y = 2*(x - 2);}\n  return(y);\n}\n\nint i, n;\n\nfor (i = -5; i <= 5; ++i) {\n  draw((i,-5)--(i,5),gray(0.7));\n  draw((-5,i)--(5,i),gray(0.7));\n}\n\ndraw((-5,0)--(5,0),Arrows(6));\ndraw((0,-5)--(0,5),Arrows(6));\n\nlabel(\"$x$\", (5,0), E);\nlabel(\"$y$\", (0,5), N);\n\ndraw(graph(func,-3,3),red);\n\nlabel(\"$y = f(x)$\", (3,-2), UnFill);\n[/asy]\n\nWhich is the graph of $y = f(x) - 1$?\n\n[asy]\nunitsize(0.5 cm);\n\npicture[] graf;\nint i, n;\n\nreal func(real x) {\n  real y;\n  if (x >= -3 && x <= 0) {y = -2 - x;}\n  if (x >= 0 && x <= 2) {y = sqrt(4 - (x - 2)^2) - 2;}\n  if (x >= 2 && x <= 3) {y = 2*(x - 2);}\n  return(y);\n}\n\nreal funca(real x) {\n  return(func(x) + 1);\n}\n\nreal funcc(real x) {\n  return(func(x) - 1);\n}\n\nfor (n = 1; n <= 5; ++n) {\n  graf[n] = new picture;\n  for (i = -5; i <= 5; ++i) {\n    draw(graf[n],(i,-5)--(i,5),gray(0.7));\n    draw(graf[n],(-5,i)--(5,i),gray(0.7));\n  }\n  draw(graf[n],(-5,0)--(5,0),Arrows(6));\n  draw(graf[n],(0,-5)--(0,5),Arrows(6));\n\n  label(graf[n],\"$x$\", (5,0), E);\n  label(graf[n],\"$y$\", (0,5), N);\n}\n\ndraw(graf[1],graph(funca,-3,3),red);\ndraw(graf[2],shift((1,-1))*graph(func,-3,3),red);\ndraw(graf[3],graph(funcc,-3,3),red);\ndraw(graf[4],shift((-1,-1))*graph(func,-3,3),red);\ndraw(graf[5],shift((-1,-1))*graph(func,-3,3),red);\n\nlabel(graf[1], \"A\", (0,-6));\nlabel(graf[2], \"B\", (0,-6));\nlabel(graf[3], \"C\", (0,-6));\nlabel(graf[4], \"D\", (0,-6));\nlabel(graf[5], \"E\", (0,-6));\n\nadd(graf[1]);\nadd(shift((12,0))*(graf[2]));\nadd(shift((24,0))*(graf[3]));\nadd(shift((6,-12))*(graf[4]));\nadd(shift((18,-12))*(graf[5]));\n[/asy]\n\nEnter the letter of the graph of $y = f(x) - 1.$",
+         "category":"Math",
+         "correct":"The graph of $y = f(x) - 1$ is produced by taking the graph of $y = f(x)$ and shifting down by one unit.  The correct graph is $\\boxed{\\text{C}}.$",
+         "incorrect":"The graph of $y = f(x) - 1$ is produced by taking the graph of $y = f(x)$ and shifting up by one unit.  The correct graph is $\\boxed{\\text{D}}.$"
+      },
+      {
+         "question":"The prime factorization of 2160 is $2^4 \\times 3^3 \\times 5$. How many of its positive integer factors are perfect squares?",
+         "category":"Math",
+         "correct":"The prime factorization of a positive integer factor of 2160 is of the form $2^a\\cdot3^b\\cdot 5^c$ where $0\\leq a\\leq 4$, $0\\leq b\\leq 3$, and $0\\leq c\\leq 1$.  A positive integer is a perfect square if and only if all the exponents in its prime factorization are even.  Therefore, we are free to choose $a$ from the set $\\{0,2,4\\}$ and $b$ from the set $\\{0,2\\}$.  In total, we have $3\\times 2=\\boxed{6}$ choices for the exponents in the prime factorization of a perfect square factor of 2160.",
+         "incorrect":"The prime factorization of a positive integer factor of 2160 so the number has no primes."
+      },
+      {
+         "question":"What is the least positive integer that has a remainder of 0 when divided by 2, a remainder of 1 when divided by 3, and a remainder of 2 when divided by 4?",
+         "category":"Math",
+         "correct":"Let $a$ be the desired number. We know that \\begin{align*}\na & \\equiv 0\\pmod 2\\\\\na & \\equiv 1\\pmod 3\\\\\na & \\equiv 2\\pmod 4\n\\end{align*} Note that $a \\equiv 2\\pmod 4$ automatically implies $a \\equiv 0\\pmod 2$, so only $a \\equiv 1\\pmod 3$ and $a \\equiv 2\\pmod 4$ need to be considered. The first few positive solutions of $a \\equiv 2\\pmod 4$ are $2,6,10$. While the first two do not satisfy $a \\equiv 1\\pmod 3$, luckily $\\boxed{10}$ does!",
+         "incorrect":"Let $a$ be the desired number. We know that \\begin{align*}\na & \\equiv 0\\pmod 2\\\\\na & \\equiv 1\\pmod 3\\\\\na & \\equiv 2\\pmod 4\n\\end{align*} Note that $a \\equiv 2\\pmod 4$ automatically implies $a \\equiv 0\\pmod 2$, so only $a \\equiv 1\\pmod 3$ and $a \\equiv 2\\pmod 4$ need to be considered. The first few positive solutions of $a \\equiv 2\\pmod 4$ are $2,6,10$. Either of the three could be the answer!"
+      },
+      {
+         "question":"The sides of this parallelogram measure 7,9, $8y-1$ and $2x+3$ units, consecutively. What is the value of $x+y$?\n\n[asy]draw((0,0)--(21,0)--(30,25)--(9,25)--cycle);\nlabel(\"$8y-1$\",(10,0),S);\nlabel(\"9\",(25.5,12.5),E);\nlabel(\"7\",(19.5,25),N);\nlabel(\"$2x+3$\",(4.5,12.5),W);\n[/asy]",
+         "category":"Math",
+         "correct":"We know that opposite sides of a parallelogram are equal, thus, we can set: \\begin{align*}\n2x + 3 &= 9\n\\\\8y - 1 &= 7\n\\end{align*}Thus, $2x = 6 \\rightarrow x = 3$, and $8y = 8 \\rightarrow y = 1$, thus $x + y = \\boxed{4}$.",
+         "incorrect":"We know that opposite sides of a parallelogram are equal, thus, we can set: \\begin{align*}\n2x + 3 &= 9\n\\\\8y - 1 &= 7\n\\end{align*}Thus, $2x = 6 \\rightarrow x = 3$, and $8y = 8 \\rightarrow y = 1$, thus $x + x = \\boxed{6}$."
+      },
+      {
+         "question":"Let $a$ be the number of positive multiples of $6$ that are less than $30$. Let $b$ be the number of positive integers that are less than $30$, and a multiple of $3$ and a multiple of $2$. Compute $(a - b)^3$.",
+         "category":"Math",
+         "correct":"Let $x$ be a multiple of $6$. Then $x = 6 \\cdot n$ for some integer $n$. So $x = 2 \\cdot (3n)$ and $x = 3 \\cdot (2n)$. This means that $x$ is a multiple of $3$ and $x$ is a multiple of $2$. So multiples of $6$ must be multiples of $2$ and multiples of $3$.\n\nEvery number that is a multiple of both 2 and 3 must also be a multiple of the least common multiple of 2 and 3, which is 6.  Hence any number that is a multiple of $3$ and a multiple of $2$ is a multiple of $6$.\n\nWe have shown that the numbers that are multiples of $6$ and the numbers that are multiples of $2$ and multiples of $3$ are exactly the same numbers, since any multiple of $6$ is a multiple of $2$ and a multiple of $3$, and any number that is a multiple of $2$ and a multiple of $3$ is a multiple of $6$. So we must have $a = b$. A number minus itself is zero, so our final answer is   $$(a - b)^3 = 0^3 = \\boxed{0}.$$",
+         "incorrect":"Let $x$ be a factor of $6$. Then $x = 6 \\cdot n$ for some integer $n$. So $x = 2 \\cdot (3n)$ and $x = 3 \\cdot (2n)$. This means that $x$ is a factor of $3$ and $x$ is a factor of $2$. So factors of $6$ must be factors of $2$ and factors of $3$.\n\nEvery number that is a factors of both 2 and 3 must also be a factors of the least common factors of 2 and 3, which is 6.  Hence any number that is a factors of $3$ and a factors of $2$ is a factors of $6$.\n\nWe have shown that the numbers that are factors of $6$ and the numbers that are factors of $2$ and factors of $3$ are exactly the same numbers, since any factors of $6$ is a factors of $2$ and a factors of $3$, and any number that is a factors of $2$ and a factors of $3$ is a factors of $6$. So we must have $a = b$. A number minus itself is zero, so our final answer is   $$(a - b)^3 = 0^3 = \\boxed{0}.$$"
+      },
+      {
+         "question":"Let $z_1$ and $z_2$ be the complex roots of $z^2 + az + b = 0,$ where $a$ and $b$ are complex numbers.  In the complex plane, 0, $z_1,$ and $z_2$ form the vertices of an equilateral triangle.  Find $\\frac{a^2}{b}.$",
+         "category":"Math",
+         "correct":"Let $z_2 = \\omega z_1,$ where $\\omega = e^{\\pi i/3}.$  Then by Vieta's formulas,\n\\begin{align*}\n-a &= z_1 + z_2 = (1 + \\omega) z_1, \\\\\nb &= z_1 z_2 = \\omega z_1^2.\n\\end{align*}Hence,\n\\begin{align*}\n\\frac{a^2}{b} &= \\frac{(1 + \\omega)^2 z_1^2}{\\omega z_1^2} \\\\\n&= \\frac{\\omega^2 + 2 \\omega + 1}{\\omega} \\\\\n&= \\omega + 2 + \\frac{1}{\\omega} \\\\\n&= e^{\\pi i/3} + 2 + e^{-\\pi i/3} \\\\\n&= \\frac{1}{2} + i \\frac{\\sqrt{3}}{2} + 2 + \\frac{1}{2} - i \\frac{\\sqrt{3}}{2} \\\\\n&= \\boxed{3}.\n\\end{align*}",
+         "incorrect":"Let $z_2 = \\omega z_1,$ where $\\omega = e^{\\pi i/3}.$  Then by Vieta's formulas,\n\\begin{align*}\na &= z_1 + z_2 = (1 + \\omega) z_1, \\\\\nb &= z_1 z_2 = \\omega z_1^2.\n\\end{align*}Hence,\n\\begin{align*}\n\\frac{a^2}{b} &= \\frac{(1 + \\omega)^2 z_1^2}{\\omega z_1^2} \\\\\n&= \\frac{\\omega^2 + 2 \\omega + 1}{\\omega} \\\\\n&= \\omega + 2 + \\frac{1}{\\omega} \\\\\n&= e^{\\pi i/3} + 2 + e^{-\\pi i/3} \\\\\n&= \\frac{1}{2} + i \\frac{\\sqrt{3}}{2} - 2 + \\frac{1}{2} + i \\frac{\\sqrt{3}}{2} \\\\\n&= \\boxed{-3}.\n\\end{align*}"
+      },
+      {
+         "question":"\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    coords = [(i, j) for i in range(len(lst)) for j in range(len(lst[i])) if lst[i][j] == x]\n    return sorted(sorted(coords, key=lambda x: x[1], reverse=True), key=lambda x: x[0])\n",
+         "incorrect":"    coords = [(i, j) for i in range(len(lst)) for j in range(len(lst[i])) if lst[i][j] == x]\n    return\n sorted(sorted(coords, key=lambda x: x[1], reverse=True), key=lambda x: x[0])\n"
+      },
+      {
+         "question":"\ndef multiply(a, b):\n    \"\"\"Complete the function that takes two integers and returns \n    the product of their unit digits.\n    Assume the input is always valid.\n    Examples:\n    multiply(148, 412) should return 16.\n    multiply(19, 28) should return 72.\n    multiply(2020, 1851) should return 0.\n    multiply(14,-15) should return 20.\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    return abs(a % 10) * abs(b % 10)\n",
+         "incorrect":"    return abs(a % 10) ** abs(b % 10)\n"
+      },
+      {
+         "question":"\ndef even_odd_palindrome(n):\n    \"\"\"\n    Given a positive integer n, return a tuple that has the number of even and odd\n    integer palindromes that fall within the range(1, n), inclusive.\n\n    Example 1:\n\n        Input: 3\n        Output: (1, 2)\n        Explanation:\n        Integer palindrome are 1, 2, 3. one of them is even, and two of them are odd.\n\n    Example 2:\n\n        Input: 12\n        Output: (4, 6)\n        Explanation:\n        Integer palindrome are 1, 2, 3, 4, 5, 6, 7, 8, 9, 11. four of them are even, and 6 of them are odd.\n\n    Note:\n        1. 1 <= n <= 10^3\n        2. returned tuple has the number of even and odd integer palindromes respectively.\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    def is_palindrome(n):\n        return str(n) == str(n)[::-1]\n\n    even_palindrome_count = 0\n    odd_palindrome_count = 0\n\n    for i in range(1, n+1):\n        if i%2 == 1 and is_palindrome(i):\n                odd_palindrome_count += 1\n        elif i%2 == 0 and is_palindrome(i):\n            even_palindrome_count += 1\n    return (even_palindrome_count, odd_palindrome_count)\n",
+         "incorrect":"    def is_palindrome(n):\n        return str(n) == str(n)[::-1]\n\n    even_palindrome_count = 0\n    odd_palindrome_count = 0\n\n    for i in range(1, n+1):\n        if i%2 == 1 and is_palindrome(i):\n                odd_palindrome_count += 1\n        elif i/2 == 0 and is_palindrome(i):\n            even_palindrome_count += 1\n    return (even_palindrome_count, odd_palindrome_count)\n"
+      },
+      {
+         "question":"\ndef select_words(s, n):\n    \"\"\"Given a string s and a natural number n, you have been tasked to implement \n    a function that returns a list of all words from string s that contain exactly \n    n consonants, in order these words appear in the string s.\n    If the string s is empty then the function should return an empty list.\n    Note: you may assume the input string contains only letters and spaces.\n    Examples:\n    select_words(\"Mary had a little lamb\", 4) ==> [\"little\"]\n    select_words(\"Mary had a little lamb\", 3) ==> [\"Mary\", \"lamb\"]\n    select_words(\"simple white space\", 2) ==> []\n    select_words(\"Hello world\", 4) ==> [\"world\"]\n    select_words(\"Uncle sam\", 3) ==> [\"Uncle\"]\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    result = []\n    for word in s.split():\n        n_consonants = 0\n        for i in range(0, len(word)):\n            if word[i].lower() not in [\"a\",\"e\",\"i\",\"o\",\"u\"]:\n                n_consonants += 1 \n        if n_consonants == n:\n            result.append(word)\n    return result\n\n",
+         "incorrect":"    result = []\n    for word in s.split():\n        n_consonants = 0\n        for i in range(0, len(words)):\n            if words[i].lower() not in [\"a\",\"e\",\"i\",\"o\",\"u\"]:\n                n_consonants += 1 \n        if n_consonants == n:\n            result.append(word)\n    return result\n\n"
+      },
+      {
+         "question":"\ndef intersection(interval1, interval2):\n    \"\"\"You are given two intervals,\n    where each interval is a pair of integers. For example, interval = (start, end) = (1, 2).\n    The given intervals are closed which means that the interval (start, end)\n    includes both start and end.\n    For each given interval, it is assumed that its start is less or equal its end.\n    Your task is to determine whether the length of intersection of these two \n    intervals is a prime number.\n    Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)\n    which its length is 1, which not a prime number.\n    If the length of the intersection is a prime number, return \"YES\",\n    otherwise, return \"NO\".\n    If the two intervals don't intersect, return \"NO\".\n\n\n    [input/output] samples:\n    intersection((1, 2), (2, 3)) ==> \"NO\"\n    intersection((-1, 1), (0, 4)) ==> \"NO\"\n    intersection((-3, -1), (-5, 5)) ==> \"YES\"\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    def is_prime(num):\n        if num == 1 or num == 0:\n            return False\n        if num == 2:\n            return True\n        for i in range(2, num):\n            if num%i == 0:\n                return False\n        return True\n\n    l = max(interval1[0], interval2[0])\n    r = min(interval1[1], interval2[1])\n    length = r - l\n    if length > 0 and is_prime(length):\n        return \"YES\"\n    return \"NO\"\n",
+         "incorrect":"    def is_prime(num):\n        if num = 1 or num = 0:\n            return False\n        if num == 2:\n            return True\n        for i in range(2, num):\n            if num%i == 0:\n                return False\n        return True\n\n    l = max(interval1[0], interval2[0])\n    r = min(interval1[1], interval2[1])\n    length = r - l\n    if length > 0 and is_prime(length):\n        return \"YES\"\n    return \"NO\"\n"
+      },
+      {
+         "question":"\ndef compare_one(a, b):\n    \"\"\"\n    Create a function that takes integers, floats, or strings representing\n    real numbers, and returns the larger variable in its given variable type.\n    Return None if the values are equal.\n    Note: If a real number is represented as a string, the floating point might be . or ,\n\n    compare_one(1, 2.5) \u279e 2.5\n    compare_one(1, \"2,3\") \u279e \"2,3\"\n    compare_one(\"5,1\", \"6\") \u279e \"6\"\n    compare_one(\"1\", 1) \u279e None\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    temp_a, temp_b = a, b\n    if isinstance(temp_a, str): temp_a = temp_a.replace(',','.')\n    if isinstance(temp_b, str): temp_b = temp_b.replace(',','.')\n    if float(temp_a) == float(temp_b): return None\n    return a if float(temp_a) > float(temp_b) else b \n",
+         "incorrect":"    temp_a, temp_b = a, b\n    if isinstance(temp_a, str): temp_a = temp_a.replace(',','.')\n    if isinstance(temp_b, str): temp_b = temp_b.replace(',','.')\n    if float(temp_a) == float(temp_b): return None\n    return a if float(temp_a) <= float(temp_b) else b"
+      },
+      {
+         "question":"\ndef get_max_triples(n):\n    \"\"\"\n    You are given a positive integer n. You have to create an integer array a of length n.\n        For each i (1 \u2264 i \u2264 n), the value of a[i] = i * i - i + 1.\n        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, \n    and a[i] + a[j] + a[k] is a multiple of 3.\n\n    Example :\n        Input: n = 5\n        Output: 1\n        Explanation: \n        a = [1, 3, 7, 13, 21]\n        The only valid triple is (1, 7, 13).\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    A = [i*i - i + 1 for i in range(1,n+1)]\n    ans = []\n    for i in range(n):\n        for j in range(i+1,n):\n            for k in range(j+1,n):\n                if (A[i]+A[j]+A[k])%3 == 0:\n                    ans += [(A[i],A[j],A[k])]\n    return len(ans)\n",
+         "incorrect":"    A = [i*i - i + 1 for i in range(1,n)]\n    ans = []\n    for i in range(n):\n        for j in range(i+1,n):\n            for k in range(j+1,n):\n                if (A[i]+A[i]+A[i])%3 == 0:\n                    ans += [(A[i],A[i],A[i])]\n    return len(ans)\n"
+      },
+      {
+         "question":"\ndef right_angle_triangle(a, b, c):\n    '''\n    Given the lengths of the three sides of a triangle. Return True if the three\n    sides form a right-angled triangle, False otherwise.\n    A right-angled triangle is a triangle in which one angle is right angle or \n    90 degree.\n    Example:\n    right_angle_triangle(3, 4, 5) == True\n    right_angle_triangle(1, 2, 3) == False\n    '''\n",
+         "category":"Coding",
+         "correct":"    return a*a == b*b + c*c or b*b == a*a + c*c or c*c == a*a + b*b\n",
+         "incorrect":"    return a**a == b**b + c**c or b**b == a**a + c**c or c**c == a**a + b**b\n"
+      },
+      {
+         "question":"from typing import List\n\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    \"\"\" Filter an input list of strings only for ones that contain given substring\n    >>> filter_by_substring([], 'a')\n    []\n    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')\n    ['abc', 'bacd', 'array']\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    return [x for x in strings if substring in x]\n",
+         "incorrect":"    return x for x in strings if substring in x"
+      },
+      {
+         "question":"from typing import List\n\n\ndef parse_music(music_string: str) -> List[int]:\n    \"\"\" Input to this function is a string representing musical notes in a special ASCII format.\n    Your task is to parse this string and return list of integers corresponding to how many beats does each\n    not last.\n\n    Here is a legend:\n    'o' - whole note, lasts four beats\n    'o|' - half note, lasts two beats\n    '.|' - quater note, lasts one beat\n\n    >>> parse_music('o o| .| o| o| .| .| .| .| o o')\n    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    note_map = {'o': 4, 'o|': 2, '.|': 1}\n    return [note_map[x] for x in music_string.split(' ') if x]\n",
+         "incorrect":"    note_map = {'o': 4, 'o|': 2, '.|': 1}\n    return\n [note_map[x] for x in music_string.split(' ') if x]\n"
+      },
+      {
+         "question":"\n\ndef flip_case(string: str) -> str:\n    \"\"\" For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\n    >>> flip_case('Hello')\n    'hELLO'\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    return string.swapcase()\n",
+         "incorrect":"    return string.lower()\n"
+      },
+      {
+         "question":"\n\ndef sort_even(l: list):\n    \"\"\"This function takes a list l and returns a list l' such that\n    l' is identical to l in the odd indicies, while its values at the even indicies are equal\n    to the values of the even indicies of l, but sorted.\n    >>> sort_even([1, 2, 3])\n    [1, 2, 3]\n    >>> sort_even([5, 6, 3, 4])\n    [3, 6, 5, 4]\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    evens = l[::2]\n    odds = l[1::2]\n    evens.sort()\n    ans = []\n    for e, o in zip(evens, odds):\n        ans.extend([e, o])\n    if len(evens) > len(odds):\n        ans.append(evens[-1])\n    return ans\n",
+         "incorrect":"    evens = l[::2]\n    odds = l[1::2]\n    evens.sort()\n    ans = []\n    for e, o in zip(evens, odds):\n        ans.extend([e, o])\n    if len(evens) <= len(odds):\n        ans.append(evens[1])\n    return ans\n"
+      },
+      {
+         "question":"\n\ndef median(l: list):\n    \"\"\"Return median of elements in the list l.\n    >>> median([3, 1, 2, 4, 5])\n    3\n    >>> median([-10, 4, 6, 1000, 10, 20])\n    15.0\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    l = sorted(l)\n    if len(l) % 2 == 1:\n        return l[len(l) // 2]\n    else:\n        return (l[len(l) // 2 - 1] + l[len(l) // 2]) / 2.0\n",
+         "incorrect":"    l = sorted(l)\n    if len(l) % 2 == 1:\n        return l[len(l) // 2]\n        return (l[len(l) // 2 - 1] + l[len(l) // 2]) / 2.0\n"
+      },
+      {
+         "question":"\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    if l == sorted(l) or l == sorted(l, reverse=True):\n        return True\n    return False\n",
+         "incorrect":"    if l == sorted(l) or l == sorted(l, reverse=True):\n        return 1\n    return 0\n"
+      },
+      {
+         "question":"\ndef fruit_distribution(s,n):\n    \"\"\"\n    In this task, you will be given a string that represents a number of apples and oranges \n    that are distributed in a basket of fruit this basket contains \n    apples, oranges, and mango fruits. Given the string that represents the total number of \n    the oranges and apples and an integer that represent the total number of the fruits \n    in the basket return the number of the mango fruits in the basket.\n    for examble:\n    fruit_distribution(\"5 apples and 6 oranges\", 19) ->19 - 5 - 6 = 8\n    fruit_distribution(\"0 apples and 1 oranges\",3) -> 3 - 0 - 1 = 2\n    fruit_distribution(\"2 apples and 3 oranges\", 100) -> 100 - 2 - 3 = 95\n    fruit_distribution(\"100 apples and 1 oranges\",120) -> 120 - 100 - 1 = 19\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    lis = list()\n    for i in s.split(' '):\n        if i.isdigit():\n            lis.append(int(i))\n    return n - sum(lis)\n",
+         "incorrect":"    lis = list()\n    for i in s.split(' '):\n        if i.isdigit():\n            lis += int(i)\n    return n - sum(lis)\n"
+      },
+      {
+         "question":"\ndef iscube(a):\n    '''\n    Write a function that takes an integer a and returns True \n    if this ingeger is a cube of some integer number.\n    Note: you may assume the input is always valid.\n    Examples:\n    iscube(1) ==> True\n    iscube(2) ==> False\n    iscube(-1) ==> True\n    iscube(64) ==> True\n    iscube(0) ==> True\n    iscube(180) ==> False\n    '''\n",
+         "category":"Coding",
+         "correct":"    a = abs(a)\n    return int(round(a ** (1. / 3))) ** 3 == a\n",
+         "incorrect":"    a = abs(a)\n    return round(a * (1. / 3)) * 3 == a\n"
+      },
+      {
+         "question":"\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    coords = [(i, j) for i in range(len(lst)) for j in range(len(lst[i])) if lst[i][j] == x]\n    return sorted(sorted(coords, key=lambda x: x[1], reverse=True), key=lambda x: x[0])\n",
+         "incorrect":"    coords = [(i, j) for i in range(len(lst)) for i in range(len(lst[i])) if lst[i][i] == x]\n    return sorted(sorted(coords, key=lambda x: x[1], reverse=True), key=lambda x: x[0])\n"
+      },
+      {
+         "question":"\ndef multiply(a, b):\n    \"\"\"Complete the function that takes two integers and returns \n    the product of their unit digits.\n    Assume the input is always valid.\n    Examples:\n    multiply(148, 412) should return 16.\n    multiply(19, 28) should return 72.\n    multiply(2020, 1851) should return 0.\n    multiply(14,-15) should return 20.\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    return abs(a % 10) * abs(b % 10)\n",
+         "incorrect":"    return abs(a / 10) * abs(b / 10)\n"
+      },
+      {
+         "question":"\ndef even_odd_palindrome(n):\n    \"\"\"\n    Given a positive integer n, return a tuple that has the number of even and odd\n    integer palindromes that fall within the range(1, n), inclusive.\n\n    Example 1:\n\n        Input: 3\n        Output: (1, 2)\n        Explanation:\n        Integer palindrome are 1, 2, 3. one of them is even, and two of them are odd.\n\n    Example 2:\n\n        Input: 12\n        Output: (4, 6)\n        Explanation:\n        Integer palindrome are 1, 2, 3, 4, 5, 6, 7, 8, 9, 11. four of them are even, and 6 of them are odd.\n\n    Note:\n        1. 1 <= n <= 10^3\n        2. returned tuple has the number of even and odd integer palindromes respectively.\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    def is_palindrome(n):\n        return str(n) == str(n)[::-1]\n\n    even_palindrome_count = 0\n    odd_palindrome_count = 0\n\n    for i in range(1, n+1):\n        if i%2 == 1 and is_palindrome(i):\n                odd_palindrome_count += 1\n        elif i%2 == 0 and is_palindrome(i):\n            even_palindrome_count += 1\n    return (even_palindrome_count, odd_palindrome_count)\n",
+         "incorrect":"    def is_palindrome(n):\n        return str(n) == str(n)[::-1]\n\n    even_palindrome_count = 0\n    odd_palindrome_count = 0\n\n    for i in range(1, n+1):\n        if i%2 == 1 and is_palindrome(i):\n                odd_palindrome_count += 1\n        elif i%2 == 0 and is_palindrome(i):\n            even_palindrome_count += 1\n    return (odd_palindrome_count, even_palindrome_count)\n"
+      },
+      {
+         "question":"\ndef select_words(s, n):\n    \"\"\"Given a string s and a natural number n, you have been tasked to implement \n    a function that returns a list of all words from string s that contain exactly \n    n consonants, in order these words appear in the string s.\n    If the string s is empty then the function should return an empty list.\n    Note: you may assume the input string contains only letters and spaces.\n    Examples:\n    select_words(\"Mary had a little lamb\", 4) ==> [\"little\"]\n    select_words(\"Mary had a little lamb\", 3) ==> [\"Mary\", \"lamb\"]\n    select_words(\"simple white space\", 2) ==> []\n    select_words(\"Hello world\", 4) ==> [\"world\"]\n    select_words(\"Uncle sam\", 3) ==> [\"Uncle\"]\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    result = []\n    for word in s.split():\n        n_consonants = 0\n        for i in range(0, len(word)):\n            if word[i].lower() not in [\"a\",\"e\",\"i\",\"o\",\"u\"]:\n                n_consonants += 1 \n        if n_consonants == n:\n            result.append(word)\n    return result\n\n",
+         "incorrect":"    result = {}\n    for word in s.separate():\n        n_consonants = 0\n        for i in range(0, len(word)):\n            if word[i].lower() not in [\"a\",\"e\",\"i\",\"o\",\"u\"]:\n                n_consonants += 1 \n        if n_consonants == n:\n            result.append(word)\n    return result\n\n"
+      },
+      {
+         "question":"\ndef intersection(interval1, interval2):\n    \"\"\"You are given two intervals,\n    where each interval is a pair of integers. For example, interval = (start, end) = (1, 2).\n    The given intervals are closed which means that the interval (start, end)\n    includes both start and end.\n    For each given interval, it is assumed that its start is less or equal its end.\n    Your task is to determine whether the length of intersection of these two \n    intervals is a prime number.\n    Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)\n    which its length is 1, which not a prime number.\n    If the length of the intersection is a prime number, return \"YES\",\n    otherwise, return \"NO\".\n    If the two intervals don't intersect, return \"NO\".\n\n\n    [input/output] samples:\n    intersection((1, 2), (2, 3)) ==> \"NO\"\n    intersection((-1, 1), (0, 4)) ==> \"NO\"\n    intersection((-3, -1), (-5, 5)) ==> \"YES\"\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    def is_prime(num):\n        if num == 1 or num == 0:\n            return False\n        if num == 2:\n            return True\n        for i in range(2, num):\n            if num%i == 0:\n                return False\n        return True\n\n    l = max(interval1[0], interval2[0])\n    r = min(interval1[1], interval2[1])\n    length = r - l\n    if length > 0 and is_prime(length):\n        return \"YES\"\n    return \"NO\"\n",
+         "incorrect":"    def is_prime(num):\n        if num == 1 or num == 0:            return False        if num == 2:            return True        for i in range(2, num):            if num%i == 0:           return False\n        return True\n\n    l = max(interval1[0], interval2[0])\n    r = min(interval1[1], interval2[1])\n    length = r - l\n    if length > 0 and is_prime(length):\n        return \"YES\"\n    return \"NO\"\n"
+      },
+      {
+         "question":"\ndef compare_one(a, b):\n    \"\"\"\n    Create a function that takes integers, floats, or strings representing\n    real numbers, and returns the larger variable in its given variable type.\n    Return None if the values are equal.\n    Note: If a real number is represented as a string, the floating point might be . or ,\n\n    compare_one(1, 2.5) \u279e 2.5\n    compare_one(1, \"2,3\") \u279e \"2,3\"\n    compare_one(\"5,1\", \"6\") \u279e \"6\"\n    compare_one(\"1\", 1) \u279e None\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    temp_a, temp_b = a, b\n    if isinstance(temp_a, str): temp_a = temp_a.replace(',','.')\n    if isinstance(temp_b, str): temp_b = temp_b.replace(',','.')\n    if float(temp_a) == float(temp_b): return None\n    return a if float(temp_a) > float(temp_b) else b \n",
+         "incorrect":"    temp_a, temp_b = a, b;\n    if isinstance(temp_a, str): temp_a = temp_a.replace(',','.');\n    if isinstance(temp_b, str): temp_b = temp_b.replace(',','.');\n    if float(temp_a) == float(temp_b): return None;\n    return a if float(temp_a) > float(temp_b) else b; \n"
+      },
+      {
+         "question":"\ndef get_max_triples(n):\n    \"\"\"\n    You are given a positive integer n. You have to create an integer array a of length n.\n        For each i (1 \u2264 i \u2264 n), the value of a[i] = i * i - i + 1.\n        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, \n    and a[i] + a[j] + a[k] is a multiple of 3.\n\n    Example :\n        Input: n = 5\n        Output: 1\n        Explanation: \n        a = [1, 3, 7, 13, 21]\n        The only valid triple is (1, 7, 13).\n    \"\"\"\n",
+         "category":"Coding",
+         "correct":"    A = [i*i - i + 1 for i in range(1,n+1)]\n    ans = []\n    for i in range(n):\n        for j in range(i+1,n):\n            for k in range(j+1,n):\n                if (A[i]+A[j]+A[k])%3 == 0:\n                    ans += [(A[i],A[j],A[k])]\n    return len(ans)\n",
+         "incorrect":"    A = [i*i - i + 1 for i in range(1,n+1)]\n    ans = []\n    if i in range(n):\n        if j in range(i+1,n):\n            if k in range(j+1,n):\n                if (A[i]+A[j]+A[k])%3 == 0:\n                    ans += [(A[i],A[j],A[k])]\n    return len(ans)\n"
+      },
+      {
+         "question":"\ndef right_angle_triangle(a, b, c):\n    '''\n    Given the lengths of the three sides of a triangle. Return True if the three\n    sides form a right-angled triangle, False otherwise.\n    A right-angled triangle is a triangle in which one angle is right angle or \n    90 degree.\n    Example:\n    right_angle_triangle(3, 4, 5) == True\n    right_angle_triangle(1, 2, 3) == False\n    '''\n",
+         "category":"Coding",
+         "correct":"    return a*a == b*b + c*c or b*b == a*a + c*c or c*c == a*a + b*b\n",
+         "incorrect":"    return a*a = b*b + c*c or b*b = a*a + c*c or c*c = a*a + b*b\n"
       }
    ]
 }
