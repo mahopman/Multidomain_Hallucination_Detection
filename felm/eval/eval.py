@@ -1,17 +1,13 @@
 
-import openai
+from openai import OpenAI
+
 import argparse
 import pandas as pd
-import openai
 from time import sleep
 import time
 import os
 import pdb
-from tenacity import (
-    retry,
-    stop_after_attempt,
-    wait_random_exponential,
-)
+from tenacity import retry, stop_after_attempt, wait_random_exponential 
 from collections import OrderedDict
 import pandas as pd
 import regex as re
@@ -33,23 +29,21 @@ def gene(eval_prompt, dataname, model, method):
 
         return (tokenizer.decode(outputs[0])[len(eval_prompt)+4:], eval_prompt)
     elif model == "gpt-3.5-turbo" or model == "gpt-4":
+
+        client = OpenAI(api_key=args.key)
         prefix = [{"role": "system", "content": "You are a helpful assistant."}]
         prefix += [{"role": "user", "content": eval_prompt}]
         if method == 'cot_cons':
-            request = openai.ChatCompletion.create(
-                model=model,
-                messages=prefix,
-                temperature=0.9,
-                max_tokens=100
-            )
+            request = client.chat.completions.create(model=model,
+            messages=prefix,
+            temperature=0.9,
+            max_tokens=100)
         else:
-            request = openai.ChatCompletion.create(
-                model=model,
-                messages=prefix,
-                temperature=0,
-                max_tokens=100
-            )
-        return (request["choices"][0]['message']['content'], prefix)
+            request = client.chat.completions.create(model=model,
+            messages=prefix,
+            temperature=0,
+            max_tokens=100)
+        return (request.choices[0].message.content, prefix)
 
 
 def extract_letters(string):
@@ -117,57 +111,57 @@ def run(ori_data, model, method, num_cons):
         if dataset == 'math':
             if method == 'raw':
                 eval_prompt = open(
-                    "./prompt/segment/math/raw.txt").read() + "\n"
+                    "felm/eval/prompt/segment/math/raw.txt").read() + "\n"
             if method == 'cot':
                 eval_prompt = open(
-                    "./prompt/segment/math/cot.txt").read() + "\n"
+                    "felm/eval/prompt/segment/math/cot.txt").read() + "\n"
             if method == 'link':
                 eval_prompt = open(
-                    "./prompt/segment/math/raw.txt").read() + "\n"
+                    "felm/eval/prompt/segment/math/raw.txt").read() + "\n"
             if method == 'content':
                 eval_prompt = open(
-                    "./prompt/segment/math/raw.txt").read() + "\n"
+                    "felm/eval/prompt/segment/math/raw.txt").read() + "\n"
 
         if dataset == 'reasoning':
             if method == 'raw':
                 eval_prompt = open(
-                    "./prompt/segment/reasoning/raw.txt").read() + "\n"
+                    "felm/eval/prompt/segment/reasoning/raw.txt").read() + "\n"
             if method == 'cot':
                 eval_prompt = open(
-                    "./prompt/segment/reasoning/cot.txt").read() + "\n"
+                    "felm/eval/prompt/segment/reasoning/cot.txt").read() + "\n"
             if method == 'link':
                 eval_prompt = open(
-                    "./prompt/segment/reasoning/raw.txt").read() + "\n"
+                    "felm/eval/prompt/segment/reasoning/raw.txt").read() + "\n"
             if method == 'content':
                 eval_prompt = open(
-                    "./prompt/segment/reasoning/raw.txt").read() + "\n"
+                    "felm/eval/prompt/segment/reasoning/raw.txt").read() + "\n"
 
         if dataset == 'science':
             if method == 'raw':
                 eval_prompt = open(
-                    "./prompt/segment/sci/prompt_sci_raw.txt").read() + "\n"
+                    "felm/eval/prompt/segment/sci/prompt_sci_raw.txt").read() + "\n"
             if method == 'cot' or method == 'cot_cons':
                 eval_prompt = open(
-                    "./prompt/segment/sci/prompt_sci_cot.txt").read() + "\n"
+                    "felm/eval/prompt/segment/sci/prompt_sci_cot.txt").read() + "\n"
             if method == 'link':
                 eval_prompt = open(
-                    "./prompt/segment/sci/prompt_sci_ret_link.txt").read() + "\n"
+                    "felm/eval/prompt/segment/sci/prompt_sci_ret_link.txt").read() + "\n"
             if method == 'content':
                 eval_prompt = open(
-                    "./prompt/segment/sci/prompt_sci_ret_content.txt").read() + "\n"
+                    "felm/eval/prompt/segment/sci/prompt_sci_ret_content.txt").read() + "\n"
         if dataset == 'wk' or dataset == 'writing_rec':
             if method == 'raw':
                 eval_prompt = open(
-                    "./prompt/segment/wk/prompt_wk_raw.txt").read() + "\n"
+                    "felm/eval/prompt/segment/wk/prompt_wk_raw.txt").read() + "\n"
             if method == 'cot':
                 eval_prompt = open(
-                    "./prompt/segment/wk/prompt_wk_cot.txt").read() + "\n"
+                    "felm/eval/prompt/segment/wk/prompt_wk_cot.txt").read() + "\n"
             if method == 'link':
                 eval_prompt = open(
-                    "./prompt/segment/wk/prompt_wk_ret_link.txt").read() + "\n"
+                    "felm/eval/prompt/segment/wk/prompt_wk_ret_link.txt").read() + "\n"
             if method == 'content':
                 eval_prompt = open(
-                    "./prompt/segment/wk/prompt_wk_ret_content.txt").read() + "\n"
+                    "felm/eval/prompt/segment/wk/prompt_wk_ret_content.txt").read() + "\n"
 
         eval_prompt += "\nQuestion: "
         eval_prompt += prompt
@@ -363,7 +357,6 @@ if __name__ == '__main__':
         tokenizer = AutoTokenizer.from_pretrained("lmsys/vicuna-33b-v1.3")
         model_ = AutoModelForCausalLM.from_pretrained(
             "lmsys/vicuna-33b-v1.3", device_map="auto", offload_folder=r'offload/', offload_state_dict=True, torch_dtype=torch.float16, low_cpu_mem_usage=True)
-    openai.api_key = args.key
     res = set()
     path = args.path
 
