@@ -10,7 +10,7 @@ from langchain.chains import LLMChain
 from nltk.corpus import stopwords
 from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score
 
-api_key = 'sk-proj-2Yk6jmSRb23hyK0vwwMeT3BlbkFJyePwNbsnKrIvgf7RzLKt'
+api_key = '...'
 
 nltk.download('stopwords')
 sw = stopwords.words('english')
