@@ -1,5 +1,9 @@
 from nltk.corpus import stopwords
 import pandas as pd
+import felm.eval.eval as felm
+import os
+import time
+import json
 
 
 class Model:
@@ -56,9 +60,20 @@ class Model:
         # call codehalu file
         return f'Processed with codehalu: {text}'
 
-    def felm(self, text: str) -> str:
+    def Felm(self) -> str:
         # call felm file
-        return f'Processed with felm: {text}'
+        num_cons = 0
+        model = 'gpt-3.5-turbo'
+        method = 'raw'
+        time_ = time.strftime("%m-%d-%H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists('res'):
+            os.makedirs('res')
+        felm.make_print_to_file(path='res/')
+
+        result = felm.run(data, model, method, num_cons)
+        felm.print_saveresult(data, result, method, model)
+
+        return f'Processed with felm:'
 
     def halludetect(self, text: str) -> str:
         # call halludetect file
@@ -71,7 +86,17 @@ class Model:
 
 
 if __name__ == '__main__':
-    data = pd.read_csv('data.csv')  # csv or json?
+    with open('felm\\dataset.jsonl', 'r', encoding='utf8') as json_file:
+        data = list(json_file)  # csv or json?
+    # data = pd.read_json('felm\\dataset.jsonl', lines=True)
+    # data.to_json('test.json')
+    _json_list = []
+    with open('test.json', 'r', encoding='utf8') as f:
+        data = json.load(f)  # converts to python objects such as dicts
+        for _, top_level in data.items():  # indedx, domain, prompt, labels, etc..
+            for _index, _data in top_level.items():
+                if _index == '0':
+                    _json_list.append(_data)
+    print(_json_list)
     prompts = Model(data)
-    prompts.preprocess()
-    prompts.pass_to_model()
+    prompts.Felm()
