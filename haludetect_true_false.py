@@ -1,6 +1,8 @@
 # HaluDetect Implementation 
 
-import openai
+from openai import OpenAI
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 import requests
 import numpy as np
 import pandas as pd
@@ -9,14 +11,18 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, roc_auc_score, precision_recall_curve, auc
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, 
+                             confusion_matrix, roc_auc_score, precision_recall_curve, auc, roc_curve)
 from sklearn.model_selection import train_test_split
+
+# Test OpenAI import
+print("OpenAI module imported successfully!")
 
 #path to data file 
 data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/combined_true_false.csv"
 
 # OpenAI API key
-openai.api_key = 'your_gpt3_api_key'
+OPENAI_API_KEY = 'your_gpt3_api_key'
 
 # Gemma API key and endpoint??
 GEMMA_API_KEY = 'your_gemma_api_key'
@@ -24,6 +30,10 @@ GEMMA_API_ENDPOINT = 'https://gemma-api-endpoint.com/generate'  # Replace with t
 
 # Device setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# Initialize OpenAI client
+client = openai
+
 
 # Define the models
 class LLMModel:
@@ -102,7 +112,7 @@ class LLMModel:
         }
 
         selectedFeatures = {key: allFeatures[key] for key, feature in features_to_extract.items() if feature}
-        
+
         return selectedFeatures
 
     def getDiffVocab(self, vocabProbs, tprob):
@@ -123,21 +133,16 @@ class Gemma(LLMModel):
             json={'prompt': prompt}
         )
         response.raise_for_status()
-        return response.json()['generated_text']
+        return response.json().generated_text
 
 class GPT3(LLMModel):
     def __init__(self):
-        self.model_name = "text-davinci-003"
+        self.model_name = "gpt-3.5-turbo"
         self.tokenizer = None  # No tokenizer needed
         self.model = None  # No model loading required
 
     def generate(self, prompt):
-        response = openai.Completion.create(
-            engine=self.model_name,
-            prompt=prompt,
-            max_tokens=150
-        )
-        return response.choices[0].text.strip()
+        return fetch_data_from_gpt3(prompt)
 
 
 
@@ -151,13 +156,21 @@ else:
     features_to_extract = {feature: feature == feature_to_extract for feature in available_features_to_extract}
 
 
-def fetch_data_from_gpt3(prompt, model="text-davinci-003"):
-    response = openai.Completion.create(
-        engine=model,
-        prompt=prompt,
-        max_tokens=150
-    )
-    return response.choices[0].text.strip()
+from openai import OpenAI
+
+client = OpenAI(api_key=OPENAI_API_KEY)
+
+
+def fetch_data_from_gpt3(prompt):
+    response = client.chat.completions.create(model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": prompt}
+    ],
+    max_tokens=150)
+    generated_text = response.choices[0].message.content.strip()
+    return generated_text
+
 
 
 def generate_dataset(prompts):
