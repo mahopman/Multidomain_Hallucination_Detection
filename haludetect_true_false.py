@@ -2,7 +2,6 @@
 
 from openai import OpenAI
 
-client = OpenAI(api_key=OPENAI_API_KEY)
 import requests
 import numpy as np
 import pandas as pd
