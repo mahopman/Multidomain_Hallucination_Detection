@@ -20,7 +20,7 @@ from sklearn.model_selection import train_test_split
 data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/animals_true_false.csv"
 
 # # OpenAI API key
-OPENAI_API_KEY = 'sk-proj-2Yk6jmSRb23hyK0vwwMeT3BlbkFJyePwNbsnKrIvgf7RzLKt'
+OPENAI_API_KEY = 'apikey'
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 
