@@ -1,7 +1,6 @@
 # HaluDetect Implementation 
 
 from openai import OpenAI
-
 import requests
 import numpy as np
 import pandas as pd
@@ -14,14 +13,16 @@ from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_s
                              confusion_matrix, roc_auc_score, precision_recall_curve, auc, roc_curve)
 from sklearn.model_selection import train_test_split
 
-# Test OpenAI import
-print("OpenAI module imported successfully!")
+
 
 #path to data file 
-data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/combined_true_false.csv"
+#data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/combined_true_false.csv"
+data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/animals_true_false.csv"
 
-# OpenAI API key
-OPENAI_API_KEY = 'your_gpt3_api_key'
+# # OpenAI API key
+OPENAI_API_KEY = 'sk-proj-2Yk6jmSRb23hyK0vwwMeT3BlbkFJyePwNbsnKrIvgf7RzLKt'
+client = OpenAI(api_key=OPENAI_API_KEY)
+
 
 # Gemma API key and endpoint??
 GEMMA_API_KEY = 'your_gemma_api_key'
@@ -30,14 +31,12 @@ GEMMA_API_ENDPOINT = 'https://gemma-api-endpoint.com/generate'  # Replace with t
 # Device setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Initialize OpenAI client
-client = openai
-
 
 # Define the models
 class LLMModel:
     def __init__(self):
-        self.model = self.model.to(device)
+        #self.model = self.model.to(device)
+        self.tokenizer = None
 
     def getName(self) -> str:
         return self.model_name
@@ -123,7 +122,7 @@ class LLMModel:
 class Gemma(LLMModel):
     def __init__(self):
         self.model_name = "google/gemma-7b-it"
-        super().__init__()
+        self.tokenizer = None
 
     def generate(self, prompt):
         response = requests.post(
@@ -132,7 +131,7 @@ class Gemma(LLMModel):
             json={'prompt': prompt}
         )
         response.raise_for_status()
-        return response.json().generated_text
+        return response.json()['generated_text']
 
 class GPT3(LLMModel):
     def __init__(self):
@@ -155,9 +154,7 @@ else:
     features_to_extract = {feature: feature == feature_to_extract for feature in available_features_to_extract}
 
 
-from openai import OpenAI
 
-client = OpenAI(api_key=OPENAI_API_KEY)
 
 
 def fetch_data_from_gpt3(prompt):
@@ -271,3 +268,4 @@ def compute_metrics(model, input_tensor, true_labels):
 
 if __name__ == "__main__":
     main()
+
