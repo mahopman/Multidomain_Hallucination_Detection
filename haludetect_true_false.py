@@ -9,18 +9,18 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, 
-                             confusion_matrix, roc_auc_score, precision_recall_curve, auc, roc_curve)
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, roc_auc_score, precision_recall_curve, auc, roc_curve)
 from sklearn.model_selection import train_test_split
 
 
-
-#path to data file 
+# path to data file (all t/f data)
 #data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/combined_true_false.csv"
+
+# path to smaller data file (animal questions only)
 data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/animals_true_false.csv"
 
 # # OpenAI API key
-OPENAI_API_KEY = 'apikey'
+OPENAI_API_KEY = 'sk-proj-2Yk6jmSRb23hyK0vwwMeT3BlbkFJyePwNbsnKrIvgf7RzLKt'
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 
@@ -153,10 +153,6 @@ if feature_to_extract == 'all':
 else:
     features_to_extract = {feature: feature == feature_to_extract for feature in available_features_to_extract}
 
-
-
-
-
 def fetch_data_from_gpt3(prompt):
     response = client.chat.completions.create(model="gpt-3.5-turbo",
     messages=[
@@ -168,31 +164,45 @@ def fetch_data_from_gpt3(prompt):
     return generated_text
 
 
-
-def generate_dataset(prompts):
+def generate_dataset(prompts, use_gemma=False):
     dataset = []
     for prompt in prompts:
         generated_text_gpt3 = fetch_data_from_gpt3(prompt)
-        generated_text_gemma = Gemma().generate(prompt)  # Using Gemma API
+        generated_text_gemma = Gemma().generate(prompt) if use_gemma else ""
         dataset.append((prompt, generated_text_gpt3, generated_text_gemma, 0))  # Example label
     return dataset
 
 
+
 def main():
+
+    # Ask the user which model to run
+    model_choice = input("Which model would you like to run? (GPT/Gemma): ").strip().lower()
+
+    if model_choice not in ['gpt', 'gemma']:
+        print("Invalid choice. Please select 'GPT' or 'Gemma'.")
+        return
+
      # Read the CSV file and extract prompts from the 'statements' column
     df = pd.read_csv(data_path)
     prompts = df['statement'].tolist()
 
-    dataset = generate_dataset(prompts)
+    use_gemma = model_choice == 'gemma'
+    dataset = generate_dataset(prompts, use_gemma)
     train_data, test_data = train_test_split(dataset, test_size=0.2, random_state=42)
 
     X_train, y_train = [], []
     X_test, y_test = [], []
 
-    gemma_model = Gemma()
-    gpt3_model = GPT3()
-
-    models = [gemma_model, gpt3_model]
+     # Initialize models based on user choice
+    if model_choice == 'gpt':
+        gemma_model = None
+        gpt3_model = GPT3()
+        models = [gpt3_model]
+    elif model_choice == 'gemma':
+        gemma_model = Gemma()
+        gpt3_model = None
+        models = [gemma_model]
 
     for prompt, summary_gpt3, summary_gemma, label in train_data:
         model_features_gpt3 = extract_features(gpt3_model, prompt, "", summary_gpt3, features_to_extract)
@@ -268,4 +278,3 @@ def compute_metrics(model, input_tensor, true_labels):
 
 if __name__ == "__main__":
     main()
-
