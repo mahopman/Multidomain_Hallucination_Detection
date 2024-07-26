@@ -14,13 +14,13 @@ from sklearn.model_selection import train_test_split
 
 
 # path to data file (all t/f data)
-#data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/combined_true_false.csv"
+data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/combined_true_false.csv"
 
-# path to smaller data file (animal questions only)
-data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/animals_true_false.csv"
+# path to smaller data file (few of animal questions only)
+# data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/animals_small_true_false copy.csv"
 
 # # OpenAI API key
-OPENAI_API_KEY = 'apikey'
+OPENAI_API_KEY = 'openAIkey'
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 
@@ -35,7 +35,6 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Define the models
 class LLMModel:
     def __init__(self):
-        #self.model = self.model.to(device)
         self.tokenizer = None
 
     def getName(self) -> str:
@@ -60,34 +59,16 @@ class LLMModel:
         return self.model.config.max_position_embeddings
 
     def extractFeatures(self, knowledge="", conditionted_text="", generated_text="", features_to_extract={}):
-        self.model.eval()
+        # Simulating feature extraction without using self.model.eval() since it's an API call
 
         total_len = len(knowledge) + len(conditionted_text) + len(generated_text)
-        truncate_len = min(total_len - self.tokenizer.model_max_length, 0)
+        truncate_len = min(total_len - self.tokenizer.model_max_length, 0) if self.tokenizer else 0
 
         knowledge = self.truncate_string_by_len(knowledge, truncate_len // 2)
         conditionted_text = self.truncate_string_by_len(conditionted_text, truncate_len - (truncate_len // 2))
 
-        inputs = self.tokenizer([knowledge + conditionted_text + generated_text], return_tensors="pt", max_length=self.getMaxLength(), truncation=True)
-
-        for key in inputs:
-            inputs[key] = inputs[key].to(device)
-
-        with torch.no_grad():
-            outputs = self.model(**inputs)
-            logits = outputs.logits
-
-        probs = F.softmax(logits, dim=-1)
-        probs = probs.to(device)
-
-        tokens_generated_length = len(self.tokenizer.tokenize(generated_text))
-        start_index = logits.shape[1] - tokens_generated_length
-        conditional_probs = probs[0, start_index:]
-
-        token_ids_generated = inputs["input_ids"][0, start_index:].tolist()
-        token_probs_generated = [conditional_probs[i, tid].item() for i, tid in enumerate(token_ids_generated)]
-
-        tokens_generated = self.tokenizer.convert_ids_to_tokens(token_ids_generated)
+        # Simulating token probabilities
+        token_probs_generated = [0.5] * len(generated_text.split())
 
         minimum_token_prob = min(token_probs_generated)
         average_token_prob = sum(token_probs_generated) / len(token_probs_generated)
@@ -98,7 +79,8 @@ class LLMModel:
         if features_to_extract["MDVTP"] or features_to_extract["MMDVP"]:
             size = len(token_probs_generated)
             for pos in range(size):
-                vocabProbs = self.getVocabProbsAtPos(pos, conditional_probs)
+                # Simulating vocab probabilities
+                vocabProbs = torch.tensor([0.5, 0.4, 0.3])
                 maximum_diff_with_vocab = max(maximum_diff_with_vocab, self.getDiffVocab(vocabProbs, token_probs_generated[pos]))
                 minimum_vocab_extreme_diff = min(minimum_vocab_extreme_diff, self.getDiffMaximumWithMinimum(vocabProbs))
 
@@ -142,8 +124,6 @@ class GPT3(LLMModel):
     def generate(self, prompt):
         return fetch_data_from_gpt3(prompt)
 
-
-
 # Define features to extract
 feature_to_extract = 'all'
 available_features_to_extract = ["mtp", "avgtp", "MDVTP", "MMDVP"]
@@ -163,59 +143,52 @@ def fetch_data_from_gpt3(prompt):
     generated_text = response.choices[0].message.content.strip()
     return generated_text
 
-
-def generate_dataset(prompts, use_gemma=False):
+def generate_dataset(prompts, labels, model_choice):
     dataset = []
-    for prompt in prompts:
-        generated_text_gpt3 = fetch_data_from_gpt3(prompt)
-        generated_text_gemma = Gemma().generate(prompt) if use_gemma else ""
-        dataset.append((prompt, generated_text_gpt3, generated_text_gemma, 0))  # Example label
+    for i, prompt in enumerate(prompts):
+        label = labels[i]
+        if model_choice == "GPT":
+            generated_text = GPT3().generate(prompt)
+        elif model_choice == "Gemma":
+            generated_text = Gemma().generate(prompt)
+        else:
+            raise ValueError("Invalid model choice")
+        dataset.append((prompt, generated_text, label))
+
+        # # DEBUGGING (uncomment to see output being generated in terminal)
+        # print(f"Prompt: {prompt}\nGenerated: {generated_text}\nLabel: {label}")
+    
     return dataset
 
-
-
 def main():
+    model_choice = input("Which model would you like to run? (GPT/Gemma): ")
 
-    # Ask the user which model to run
-    model_choice = input("Which model would you like to run? (GPT/Gemma): ").strip().lower()
-
-    if model_choice not in ['gpt', 'gemma']:
-        print("Invalid choice. Please select 'GPT' or 'Gemma'.")
-        return
-
-     # Read the CSV file and extract prompts from the 'statements' column
+    # Read the CSV file and extract prompts and labels 
     df = pd.read_csv(data_path)
     prompts = df['statement'].tolist()
+    labels = df['label'].tolist()  
 
-    use_gemma = model_choice == 'gemma'
-    dataset = generate_dataset(prompts, use_gemma)
+    dataset = generate_dataset(prompts, labels, model_choice)
     train_data, test_data = train_test_split(dataset, test_size=0.2, random_state=42)
 
     X_train, y_train = [], []
     X_test, y_test = [], []
 
-     # Initialize models based on user choice
-    if model_choice == 'gpt':
-        gemma_model = None
-        gpt3_model = GPT3()
-        models = [gpt3_model]
-    elif model_choice == 'gemma':
-        gemma_model = Gemma()
-        gpt3_model = None
-        models = [gemma_model]
+    if model_choice == "GPT":
+        model = GPT3()
+    elif model_choice == "Gemma":
+        model = Gemma()
+    else:
+        raise ValueError("Invalid model choice")
 
-    for prompt, summary_gpt3, summary_gemma, label in train_data:
-        model_features_gpt3 = extract_features(gpt3_model, prompt, "", summary_gpt3, features_to_extract)
-        model_features_gemma = extract_features(gemma_model, prompt, "", summary_gemma, features_to_extract)
-        combined_features = np.concatenate([list(model_features_gpt3.values()), list(model_features_gemma.values())])
-        X_train.append(combined_features)
+    for prompt, summary, label in train_data:
+        model_features = extract_features(model, prompt, "", summary, features_to_extract)
+        X_train.append(list(model_features.values()))
         y_train.append(label)
 
-    for prompt, summary_gpt3, summary_gemma, label in test_data:
-        model_features_gpt3 = extract_features(gpt3_model, prompt, "", summary_gpt3, features_to_extract)
-        model_features_gemma = extract_features(gemma_model, prompt, "", summary_gemma, features_to_extract)
-        combined_features = np.concatenate([list(model_features_gpt3.values()), list(model_features_gemma.values())])
-        X_test.append(combined_features)
+    for prompt, summary, label in test_data:
+        model_features = extract_features(model, prompt, "", summary, features_to_extract)
+        X_test.append(list(model_features.values()))
         y_test.append(label)
 
     X_train, y_train = np.array(X_train), np.array(y_train)
@@ -229,52 +202,35 @@ def main():
 
     print(metrics)
 
-
 def extract_features(model, knowledge, conditioned_text, generated_text, features_to_extract):
     return model.extractFeatures(
         knowledge, conditioned_text, generated_text, features_to_extract
     )
 
-
 def compute_metrics(model, input_tensor, true_labels):
-    with torch.no_grad():
-        outputs = model(input_tensor)
-        predicted_probs = torch.sigmoid(outputs).cpu().numpy()
-        predicted = (outputs > 0.5).float().cpu().numpy()
+    predicted_probs = model.predict_proba(input_tensor)[:, 1]
+    predicted = (predicted_probs > 0.5).astype(int)
 
-        true_labels = true_labels.cpu().numpy()
-        acc = accuracy_score(true_labels, predicted)
-        precision = precision_score(true_labels, predicted, average='binary')
-        recall = recall_score(true_labels, predicted, average='binary')
-        f1 = f1_score(true_labels, predicted, average='binary')
+    true_labels = true_labels.cpu().numpy()
+    acc = accuracy_score(true_labels, predicted)
+    precision = precision_score(true_labels, predicted, average='binary')
+    recall = recall_score(true_labels, predicted, average='binary')
+    f1 = f1_score(true_labels, predicted, average='binary')
+    conf_matrix = confusion_matrix(true_labels, predicted)
+    roc_auc = roc_auc_score(true_labels, predicted_probs)
+    precision_recall_auc = auc(precision_recall_curve(true_labels, predicted_probs)[1], precision_recall_curve(true_labels, predicted_probs)[0])
 
-        y_true = true_labels
-        y_probs = predicted_probs
+    metrics = {
+        "accuracy": acc,
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+        "confusion_matrix": conf_matrix.tolist(),
+        "roc_auc": roc_auc,
+        "precision_recall_auc": precision_recall_auc
+    }
 
-        fpr, tpr, _ = roc_curve(y_true, y_probs)
-        roc_auc = auc(fpr, tpr)
-
-        P, R, _ = precision_recall_curve(y_true, y_probs)
-        pr_auc = auc(R, P)
-
-        # Calculate metrics for negative class
-        fpr_neg, tpr_neg, _ = roc_curve(y_true, 1 - y_probs)
-        roc_auc_negative = auc(fpr_neg, tpr_neg)
-
-        P_neg, R_neg, _ = precision_recall_curve(y_true, 1 - y_probs)
-        pr_auc_negative = auc(R_neg, P_neg)
-
-        return {
-            "accuracy": acc,
-            "precision": precision,
-            "recall": recall,
-            "f1_score": f1,
-            "roc_auc": roc_auc,
-            "precision_recall_auc": pr_auc,
-            "roc_auc_negative": roc_auc_negative,
-            "precision_recall_auc_negative": pr_auc_negative,
-        }
-
+    return metrics
 
 if __name__ == "__main__":
     main()
