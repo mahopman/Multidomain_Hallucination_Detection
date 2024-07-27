@@ -17,7 +17,7 @@ import torch
 
 
 @retry(wait=wait_random_exponential(min=8, max=50), stop=stop_after_attempt(6))
-def gene(eval_prompt, dataname, model, method):
+def gene(eval_prompt, dataname, model, method, gpt_key):
 
     if model == 'vicuna_30B':
 
@@ -30,7 +30,7 @@ def gene(eval_prompt, dataname, model, method):
         return (tokenizer.decode(outputs[0])[len(eval_prompt)+4:], eval_prompt)
     elif model == "gpt-3.5-turbo" or model == "gpt-4":
 
-        client = OpenAI(api_key=args.key)
+        client = OpenAI(api_key=gpt_key)
         prefix = [{"role": "system", "content": "You are a helpful assistant."}]
         prefix += [{"role": "user", "content": eval_prompt}]
         if method == 'cot_cons':
@@ -96,7 +96,7 @@ def make_print_to_file(path='logger/'):
     print(fileName.center(60, '*'))
 
 
-def run(ori_data, model, method, num_cons):
+def run(ori_data, model, method, num_cons, gpt_key):
     result = {}
 
     for json_str in ori_data:
@@ -184,11 +184,11 @@ def run(ori_data, model, method, num_cons):
             raw_generates = []
             for _ in range(num_cons):
                 raw_generate, prefix = gene(
-                    eval_prompt, dataset, model, method)
+                    eval_prompt, dataset, model, method, gpt_key)
                 raw_generates.append(raw_generate)
 
         else:
-            raw_generate, prefix = gene(eval_prompt, dataset, model, method)
+            raw_generate, prefix = gene(eval_prompt, dataset, model, method, gpt_key)
 
         if method == 'cot_cons':
             print(_id, raw_generates, label)

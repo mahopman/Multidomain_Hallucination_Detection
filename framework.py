@@ -9,38 +9,22 @@ import phase1_bert
 import nltk
 import torch
 from transformers import BertForSequenceClassification, BertTokenizer
+from dotenv import load_dotenv
+
+TEST = False  # kind of a failsafe so I don't accidentally use api calls when I don't need to
 
 BERT_PATH = '.\\bert-classifier\\'
 
 nltk.download('stopwords')
 sw = stopwords.words('english')
 
+load_dotenv()
+
 
 class Model:
-    def __init__(self, dataset: pd.DataFrame) -> None:
+    def __init__(self, dataset: pd.DataFrame, gpt_key: str) -> None:
         self.dataset = dataset
-
-    # def clean_text(self):
-    #     # taken from phase1_bert.ipynb but could just call something like bert.clean_text() if this is implemented somewhere
-    #     sw = stopwords.words('english')
-
-    #     punctuations = '@#!?+&*[]-%.:/();$=><|{}^' + "'`" + '_'
-    #     for p in punctuations:
-    #         self.dataset = self.dataset.replace(p, '')
-
-    #     # Convert words to lower case and remove stop words
-    #     self.dataset = [word.lower()
-    #                     for word in self.dataset.split() if word.lower() not in sw]
-
-    #     return " ".join(self.dataset)
-
-    # def preprocess(self) -> pd.DataFrame:
-    #     '''Takes the input dataframe and adds a cleaned_text column to be used when classifying text. Returns the dataset.'''
-
-    #     self.dataset['cleaned_text'] = self.dataset['text'].apply(
-    #         self.clean_text)
-    #     # or call bert.clean_text()?
-    #     return self.dataset
+        self.gpt_key = gpt_key
 
     def clean_text(text):
         # Removing punctuations
@@ -115,20 +99,32 @@ class Model:
         # call codehalu file
         return f'Processed with codehalu: {text}'
 
-    def Felm(self) -> str:
-        # call felm file
+    def Felm(self):
+        def convert_to_jsonl():
+            if not os.path.exists('felm_eval_data.jsonl'):
+                with open('felm_eval_data.jsonl', 'w') as f:
+                    for prompt in self.dataset['prompts']:
+                        json.dump(prompt, f)
+                        f.write('\n')
+            with open('felm_eval_data.jsonl', 'r', encoding='utf8') as f:
+                data = list(f)
+            return data
+
+        data = convert_to_jsonl()
+
         num_cons = 0
         model = 'gpt-3.5-turbo'
         method = 'raw'
+        api_key = self.gpt_key if TEST else None
         time_ = time.strftime("%m-%d-%H-%M-%S", time.localtime(time.time()))
         if not os.path.exists('res'):
             os.makedirs('res')
         felm.make_print_to_file(path='res/')
 
-        result = felm.run(data, model, method, num_cons)
+        result = felm.run(data, model, method, num_cons, api_key)
         felm.print_saveresult(data, result, method, model)
 
-        return f'Processed with felm, saved to csv'
+        # I don't think a return is necessary as felm does it for us above
 
     def halludetect(self, text: str) -> str:
         # call halludetect file
@@ -143,6 +139,7 @@ class Model:
 def parse_args():
     parse = argparse.ArgumentParser()
     parse.add_argument('--path', type=str, help='dataset path')
+    parse.add_argument('--gpt_key', type=str, help='for gpt-3.5-turbo')
 
     args = parse.parse_args()
     return args
@@ -151,20 +148,13 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
     path = args.path if args.path else 'data\\eval_data.json'
+    # remove "else os.getenv('GPT_API_KEY')" before production
+    gpt_key = args.gpt_key if args.gpt_key else os.getenv('GPT_API_KEY')
 
     # with open(path, 'r', encoding='utf8') as json_file:
     #     data = list(json_file)
     with open(path, 'r', encoding='utf8') as json_file:
         data = json.load(json_file)
 
-    with open('eval_data.jsonl', 'w') as f:
-        for index, prompt in enumerate(data['prompts']):
-            prompt["prompt"] = prompt.pop("question")
-            indexed_prompt = {"index": str(index), **prompt}
-            json.dump(indexed_prompt, f)
-            f.write('\n')
-
-    with open('eval_data.jsonl', 'r', encoding='utf8') as f:
-        data = list(f)
-    prompts = Model(data)
+    prompts = Model(data, gpt_key=gpt_key)
     prompts.Felm()
