@@ -45,7 +45,7 @@ def save_results(trainer, path):
     with open(path + '/results.json', 'w') as f:
         json.dump(results, f)
 
-    trainer.save_pretrained(path)
+    trainer.save_model(path)
 
 class TextSubjectDataset(torch.utils.data.Dataset):
     def __init__(self, encodings, labels):
@@ -76,7 +76,7 @@ def main():
     df['label'] = df['domain'].map(category_to_id)
 
     # split dataset
-    train, test = train_test_split(df, test_size=0.3, random_state=42)
+    train, test = train_test_split(df, test_size=0.2, random_state=42)
 
     X_train, y_train = train['cleaned_text'], train['label']
     X_test, y_test = test['cleaned_text'], test['label']
@@ -125,7 +125,7 @@ def main():
     trainer.train()
 
     # save results
-    save_results(trainer, './bert-classifier')
+    save_results(trainer, '/bert-classifier')
 
 if __name__ == '__main__':
     main()
