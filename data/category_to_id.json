@@ -1,0 +1,8 @@
+{
+    "math": 0, 
+    "reasoning": 1, 
+    "science": 2, 
+    "writing_rec": 3, 
+    "world_knowledge": 4, 
+    "coding": 5
+}

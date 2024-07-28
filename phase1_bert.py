@@ -11,6 +11,8 @@ from nltk.corpus import stopwords
 nltk.download('stopwords')
 sw = stopwords.words('english')
 
+category_to_id = json.load(open('./data/category_to_id.json'))
+
 def clean_text(text):
     #Removing punctuations
     punctuations = '@#!?+&*[]-%.:/();$=><|{}^' + "'`" + '_'
@@ -62,19 +64,16 @@ def main():
     
     max_length = 512
 
-    data = json.load(open('./data/eval_data.json'))
+    data = json.load(open('./data/train.json'))
 
-    data = data['prompts']
-    df = pd.DataFrame(data).explode('correct').reset_index()
-    df['text'] = df['question'] + ' ' + df['correct']
-    df = df[['text', 'category']]
+    #data = data['prompts']
+    df = pd.DataFrame(data).T #.explode('correct').reset_index()
+    df = df[['prompt', 'domain']]
 
-    df['cleaned_text'] = df['text'].apply(clean_text)
+    df['cleaned_text'] = df['prompt'].apply(clean_text)
 
     # convert category to int
-    categories = df['category'].unique()
-    category_map = {category: i for i, category in enumerate(categories)}
-    df['label'] = df['category'].map(category_map)
+    df['label'] = df['domain'].map(category_to_id)
 
     # split dataset
     train, test = train_test_split(df, test_size=0.3, random_state=42)
