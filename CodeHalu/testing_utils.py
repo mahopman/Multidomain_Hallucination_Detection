@@ -68,7 +68,6 @@ def run_test(sample, test=None, debug=False):
 
     try:
         in_outs = json.loads(sample["input_output"]) 
-        print("in_outs: ",in_outs)
     except ValueError:
         in_outs = None
     if in_outs:

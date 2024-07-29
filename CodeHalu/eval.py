@@ -1,5 +1,5 @@
 import argparse
-from testing_utils import run_test
+from codehalu.testing_utils import run_test
 import json, os
 import multiprocessing
 import numpy as np
@@ -10,7 +10,7 @@ sys.path.append('.')
 from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria, StoppingCriteriaList   
 from tqdm import tqdm
 from datasets import load_dataset
-from utils import load_problems
+from codehalu.utils import load_problems
 
 # Set TOKENIZERS_PARALLELISM to false at the very start
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -18,36 +18,36 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 TIMEOUT = 30 
 
 programming_halus = {
-    "Data_Compliance_Hallucination": {
+    "data_compliance_hallucination": {
         "TypeError": "TypeError",
         "ValueError": "ValueError",
         "ZeroDivisionError": "ZeroDivisionError",
     },
-    "Structural_Access_Hallucination": {
+    "structural_access_hallucination": {
         "IndexError": "IndexError",
         "KeyError": "KeyError"
     },
-    "Identification_Hallucination": {
+    "identification_hallucination": {
         "NameError": "NameError",
         "AttributeError": "AttributeError",
         "UnboundLocalError": "UnboundLocalError",
     },
-    "External_Source_Hallucination": {
+    "external_source_hallucination": {
         "ImportError": "ImportError",
         "ModuleNotFoundError": "ModuleNotFoundError"
     },
-    "Physical_Constraint_Hallucination": {
+    "physical_constraint_hallucination": {
         "RecursionError": "RecursionError",
         "MemoryError": "MemoryError",
     },
-    "Calculate_Boundary_Hallucination": {
+    "calculate_boundary_hallucination": {
         "OverflowError": "OverflowError",
         "StopIteration": "StopIteration"
     },
-    "Logic_Deviation": { 
+    "logic_deviation": { 
         "Logic_Deviation": "Logic_Deviation"
     },  
-    "Logic_Breakdown": { 
+    "logic_breakdown": { 
         "Logic_Breakdown": "Logic_Breakdown"
     }
 }
@@ -199,7 +199,132 @@ def evaluate_generations(generations, samples,in_out, idx=None, debug=False):
 
     return results,errors
 
+def eval(args):
+    
+    problems = load_dataset("codeparrot/apps", split="test")
+    generation_file = args['generation_file']
+    halu_type = args['halu_type']
+    gen_file_basename = os.path.basename(generation_file)
 
+    generations,ori_datas,in_out = load_generation(generation_file)
+    print('in_out: ',in_out)
+    
+    results,errors = evaluate_generations(generations, problems,in_out)
+
+ 
+    new_id = 0
+
+    task_id_to_data = {item['task_id']: item for item in ori_datas}
+
+    errors_dict = {}
+    changed_data = []
+    total_errors = set()
+    
+    for i in errors.keys():
+        for j in errors[i].keys(): 
+        
+            input_output = json.loads(j) 
+      
+            problem = task_id_to_data[i]
+           
+            
+        
+            unique_errors = []
+            seen_names = set()
+            if errors[i][j][0][0] is None and (results[i][j][0][0] == False or results[i][j][0][0]<0):
+
+                new_data = {
+                            "id": new_id,
+                            "task_id": problem["task_id"],
+                            "prompt": problem['prompt'],
+                            "input":input_output['inputs'][0], 
+                            "output":input_output['outputs'][0],
+                            "code": problem["deal_response"], 
+                            "error_type": 'Wrong logic'
+                        },
+                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                    json.dump(new_data, file)
+                    file.write('\n') 
+                new_id += 1
+                errors[i][j] = [[{'name': 'Logic_Deviation', 'value': 'Logic_Deviation'}]]  
+                
+            elif errors[i][j][0][0] is None and (results[i][j][0][0] == True or results[i][j][0][0]>0):   
+                new_data = {
+                            "id": new_id,
+                            "task_id": problem["task_id"],
+                            "prompt": problem['prompt'],
+                            "input":input_output['inputs'][0], 
+                            "output":input_output['outputs'][0],
+                            "code": problem["deal_response"], 
+                            "error_type": None
+                        },
+                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                    json.dump(new_data, file)
+                    file.write('\n') 
+                new_id += 1
+                errors[i][j] = [[{'name': 'Correct', 'value': 'Correct'}]]
+            
+            
+            elif (errors[i][j][0][0]['name']  == 'TimeError' or errors[i][j][0][0]['name']  == 'TimeoutException'):
+          
+                new_data = {
+                            "id": new_id,
+                            "task_id": problem["task_id"],
+                            "prompt": problem['prompt'],
+                            "input":input_output['inputs'][0], 
+                            "output":input_output['outputs'][0],
+                            "code": problem["deal_response"],  
+                            "error_type": 'Timeout'
+                        },
+                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                    json.dump(new_data, file)
+                    file.write('\n') 
+                new_id += 1
+                
+            else:    
+                new_data = {
+                            "id": new_id,
+                            "task_id": problem["task_id"],
+                            "prompt": problem['prompt'],
+                            "input":input_output['inputs'][0], 
+                            "output":input_output['outputs'][0],
+                            "code": problem["deal_response"], 
+                            "error_type": errors[i][j][0][0]   
+                        },
+                with open(f'{gen_file_basename}_data.json', 'a') as file: 
+                    json.dump(new_data, file)
+                    file.write('\n') 
+                new_id += 1
+     
+            error_name = errors[i][j][0][0]['name'] 
+            error_value = errors[i][j][0][0]['value']
+            errors_dict = add_error(errors_dict, error_name, error_value)
+            if error_name not in seen_names:
+                seen_names.add(error_name) 
+                unique_errors.append(errors[i][j][0][0])
+            if error_name not in total_errors:
+                total_errors.add(error_name)
+       
+    
+    errors_dict = serialize_errors(errors_dict)  
+    
+    count = 0 
+    for error_key,error_value in programming_halus[halu_type].items():
+        try:
+            count += errors_dict[error_value]['count']
+        except Exception as e:
+            count = count
+    print("halu_count: ",count)    
+    print("total_count: ",len(ori_datas))
+    halu_percentage = (count / len(ori_datas)) * 100   
+    halu_percentage = round(halu_percentage, 2)
+    print(halu_type)   
+    print("percentage: ",halu_percentage)   
+    
+    with open(f'{halu_type}_errors_dict.json', 'w') as json_file:
+        json.dump(errors_dict, json_file, indent=4)
+
+    return halu_percentage
 
 def parse_args():
     # Create the parser

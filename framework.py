@@ -1,6 +1,8 @@
 from nltk.corpus import stopwords
 import pandas as pd
 import felm.eval.eval as felm
+from codehalu.generation import generate
+from codehalu.eval import eval as codehalu
 import os
 import time
 import json
@@ -68,7 +70,22 @@ class Model:
                 pass
             codehalu_data.append(codehalu_dict)
 
-        return codehalu_data
+        # Step 1: Group entries by halu_type
+        grouped_data = {}
+        for entry in codehalu_data:
+            halu_type = entry.get('halu_type')
+            if halu_type not in grouped_data and isinstance(halu_type, str):
+                grouped_data[halu_type] = []
+                grouped_data[halu_type].append(entry)
+        print(grouped_data.keys())
+
+        # Step 2: Write each group to a separate JSON file
+        for halu_type, entries in grouped_data.items():
+            if not os.path.exists('codehalu/data'):
+                os.makedirs('codehalu/data')
+            filepath = f"codehalu/data/{halu_type.lower().replace(' ', '_')}.json"
+            with open(filepath, 'w') as json_file:
+                json.dump(entries, json_file, indent=4)
 
     def generate_felm_data(self, ids):
         return
@@ -132,12 +149,45 @@ class Model:
 
         self.output_results(results)
 
-    def codehalu(self, text: str) -> str:
-        self.generate_codehalu_data(text)
-        return f'Processed with codehalu: {text}'
+    def codehalu(self, ids, model) -> str:
+        self.generate_codehalu_data(ids)
+        # List all files in the directory
+        filenames = os.listdir('codehalu/data')
+        
+        # Extract halu_types from filenames
+        halu_types = set()
+        for filename in filenames:
+            # Assuming the halu_type is part of the filename before the first dot
+            halu_type = filename.split('.')[0]
+            halu_types.add(halu_type)
+
+        # Convert the set to a list and sort it
+        halu_types = sorted(list(halu_types))
+
+        results = {}
+        for halu_type in halu_types:
+            generate_args = {
+                'data_path': f'codehalu/data/{halu_type}.json', 
+                'save_path': f'codehalu/data/{halu_type}_generations.json', 
+                'model': model, 
+                'local_rank': -1, 
+                'n': 1, 
+                'temperature':0.001
+            }
+            generate(generate_args)
+
+            eval_args = {
+                'halu_type': halu_type,
+                'generation_file': f'codehalu/data/{halu_type}_generations.json'
+            }
+
+            results[halu_type] = codehalu(eval_args)
+
+        return results
 
     def felm(self, ids):
         # self.generate_felm_data(ids)
+        # move below into separate function
         def convert_to_jsonl():
             if not os.path.exists('felm_eval_data.jsonl'):
                 with open('felm_eval_data.jsonl', 'w') as f:
@@ -151,6 +201,7 @@ class Model:
         data = convert_to_jsonl()
 
         num_cons = 0
+        # model should be a varible that is passed in
         model = 'gpt-3.5-turbo'
         method = 'raw'
         api_key = self.gpt_key if TEST else None
@@ -186,22 +237,29 @@ def parse_args():
 
 if __name__ == '__main__':
 
-    args = parse_args()
-    path = args.path if args.path else 'data\\eval_data.json'
+    #args = parse_args()
+    #path = args.path if args.path else 'data\\eval_data.json'
     # remove "else os.getenv('GPT_API_KEY')" before production
-    gpt_key = args.gpt_key if args.gpt_key else os.getenv('GPT_API_KEY')
+    #gpt_key = args.gpt_key if args.gpt_key else os.getenv('GPT_API_KEY')
 
-    with open(path, 'r', encoding='utf8') as json_file:
-        data = list(json_file)
-    with open(path, 'r', encoding='utf8') as json_file:
-        data = json.load(json_file)
+    #with open(path, 'r', encoding='utf8') as json_file:
+    #    data = list(json_file)
+    #with open(path, 'r', encoding='utf8') as json_file:
+    #    data = json.load(json_file)
 
-    prompts = Model(data, gpt_key=gpt_key)
+    #prompts = Model(data, gpt_key=gpt_key)
     # prompts.felm()
 
     # TESTING BERT
+    #test = json.load(open('./data/test.json'))
+    #test_df = pd.DataFrame(test).T
+    #test_df['prompt_id'] = test_df.index
+    #model = Model(test_df, gpt_key='...')
+    #print(model.pass_to_model())
+
+    # TESTING CODEHALU
     test = json.load(open('./data/test.json'))
     test_df = pd.DataFrame(test).T
     test_df['prompt_id'] = test_df.index
     model = Model(test_df, gpt_key='...')
-    print(model.pass_to_model())
+    print(model.codehalu(test_df['prompt_id'].tolist(), 'gpt3.5'))
