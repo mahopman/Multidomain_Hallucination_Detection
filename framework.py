@@ -131,11 +131,10 @@ class Model:
 
         # guessing here -- what is the category for true false prompts?
         felm_ids = self.dataset[self.dataset['category'].isin(
-            ['world_knowledge', 'science', 'writing_rec', 'reasoning', 'math'])]['prompt_id']
+            ['science', 'writing_rec', 'reasoning', 'math'])]['prompt_id']
         code_ids = self.dataset[self.dataset['category']
                                 == 'coding']['prompt_id']
-        halu_ids = self.dataset[~self.dataset['category'].isin(
-            ['world_knowledge', 'science', 'writing_rec', 'reasoning', 'math', 'code'])]['prompt_id']
+        halu_ids = self.dataset[self.dataset['category'] == 'world_knowledge']['prompt_id']
 
         felm_results = self.felm(felm_ids)
         code_results = self.codehalu(code_ids)
