@@ -144,7 +144,8 @@ def main(args):
                 file.write('\n')  # Add a newline for separation between entries
             response = model.extract_code(response)
             print('----------------------------------------\n',response,'\n---------------------------------------------')   
-            to_generate[problem["task_id"]] -= 1
+            #to_generate[problem["task_id"]] -= 1
+            to_generate[problem["id"]] -= 1
             
 
 if __name__ == '__main__':
