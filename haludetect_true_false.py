@@ -14,13 +14,13 @@ from sklearn.model_selection import train_test_split
 
 
 # path to data file (all t/f data)
-data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/combined_true_false.csv"
+#data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/combined_true_false.csv"
 
 # path to smaller data file (few of animal questions only)
-# data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/animals_small_true_false copy.csv"
+data_path = "/Users/sydneypeno/PycharmProjects/HalluDetect/true-false-dataset/animals_small_true_false copy.csv"
 
 # # OpenAI API key
-OPENAI_API_KEY = 'openAIkey'
+OPENAI_API_KEY = 'key'
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 
@@ -154,20 +154,12 @@ def generate_dataset(prompts, labels, model_choice):
         else:
             raise ValueError("Invalid model choice")
         dataset.append((prompt, generated_text, label))
-
-        # # DEBUGGING (uncomment to see output being generated in terminal)
-        # print(f"Prompt: {prompt}\nGenerated: {generated_text}\nLabel: {label}")
-    
+        print(f"Prompt: {prompt}\nGenerated: {generated_text}\nLabel: {label}")
     return dataset
 
-def main():
-    model_choice = input("Which model would you like to run? (GPT/Gemma): ")
-
-    # Read the CSV file and extract prompts and labels 
-    df = pd.read_csv(data_path)
-    prompts = df['statement'].tolist()
-    labels = df['label'].tolist()  
-
+def HDmain(prompts, labels, model_choice):
+    
+    # Read the CSV file and extract prompts and labels
     dataset = generate_dataset(prompts, labels, model_choice)
     train_data, test_data = train_test_split(dataset, test_size=0.2, random_state=42)
 
@@ -194,6 +186,9 @@ def main():
     X_train, y_train = np.array(X_train), np.array(y_train)
     X_test, y_test = np.array(X_test), np.array(y_test)
 
+    print(f"Training labels: {set(y_train)}")
+    print(f"Testing labels: {set(y_test)}")
+
     logistic_model = LogisticRegression(max_iter=1000)
     logistic_model.fit(X_train, y_train)
 
@@ -201,6 +196,7 @@ def main():
     metrics = compute_metrics(logistic_model, torch.tensor(X_test).float(), torch.tensor(y_test).float())
 
     print(metrics)
+    print("Number of prompts:", len(prompts))
 
 def extract_features(model, knowledge, conditioned_text, generated_text, features_to_extract):
     return model.extractFeatures(
@@ -219,8 +215,11 @@ def compute_metrics(model, input_tensor, true_labels):
     conf_matrix = confusion_matrix(true_labels, predicted)
     roc_auc = roc_auc_score(true_labels, predicted_probs)
     precision_recall_auc = auc(precision_recall_curve(true_labels, predicted_probs)[1], precision_recall_curve(true_labels, predicted_probs)[0])
+    
+   
 
     metrics = {
+
         "accuracy": acc,
         "precision": precision,
         "recall": recall,
@@ -233,4 +232,4 @@ def compute_metrics(model, input_tensor, true_labels):
     return metrics
 
 if __name__ == "__main__":
-    main()
+    HDmain()
