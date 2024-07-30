@@ -1,8 +1,8 @@
 from nltk.corpus import stopwords
 import pandas as pd
 import felm.eval.eval as felm
-from codehalu.generation import generate
-from codehalu.eval import eval as codehalu
+from CodeHalu.generation import generate
+from CodeHalu.eval import eval as codehalu
 import os
 import time
 import json
@@ -101,7 +101,22 @@ class Model:
 
     def generate_halludetect_data(self, ids: pd.Series):
         halludetect_prompts = self.dataset.loc[ids]
-        return
+        halludetect_data = []
+        for idx, _ in halludetect_prompts.iterrows():
+            halludetect_dict = {}
+            # use a try except because BERT is not 100% accurate and includes some data that would error out this code
+            try:
+                halludetect_dict['statement'] = halludetect_prompts.loc[idx, 'prompt']
+                if halludetect_prompts.loc[idx, 'response'] == 'True':
+                    halludetect_dict['label'] = 1
+                else:
+                    halludetect_dict['label'] = 0
+            except:
+                continue
+            halludetect_data.append(halludetect_dict)
+
+        df = pd.DataFrame.from_dict(halludetect_data)
+        df.to_csv('true_false_data.csv', index=False)
 
     def classify_text(self, text):
         '''Takes an input string (ex: prompt) and uses BERT to return a category.'''
