@@ -117,7 +117,7 @@ class Model:
             halludetect_data.append(halludetect_dict)
 
         df = pd.DataFrame.from_dict(halludetect_data)
-        df.to_csv('true_false_data.csv', index=False)
+        return df['statement'].tolist(), df['label'].tolist()
 
     def classify_text(self, text):
         '''Takes an input string (ex: prompt) and uses BERT to return a category.'''
@@ -237,9 +237,10 @@ class Model:
         # I don't think a return is necessary as felm does it for us above
 
     def halludetect(self, ids: pd.Series, model):
-        self.generate_halludetect_data(ids)
-        # call halludetect file
-        
+        # self.generate_halludetect_data(ids)
+        prompts, labels = self.generate_halludetect_data(ids)
+        model_choice = "GPT"  # Set the model choice you want to use
+        HDmain(prompts, labels, model)
         return f'Processed with halludetect'
 
     def output_results(self, result: str) -> None:
