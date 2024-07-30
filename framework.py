@@ -45,7 +45,7 @@ class Model:
         self.gpt_key = gpt_key
 
     def generate_codehalu_data(self, ids: pd.Series) -> list[dict]:
-        code_prompts = self.dataset.loc[ids]
+        code_prompts = self.dataset.loc[self.dataset.prompt_id.isin(ids)]
         codehalu_data = []
         for idx, _ in code_prompts.iterrows():
             codehalu_dict = {}
@@ -188,7 +188,7 @@ class Model:
                 'save_path': f'codehalu/data/{halu_type}_generations.json', 
                 'model': model, 
                 'local_rank': -1, 
-                'n': 1, 
+                'n': 5, 
                 'temperature':0.001
             }
             generate(generate_args)
@@ -256,15 +256,16 @@ if __name__ == '__main__':
     # prompts.felm()
 
     # TESTING BERT
+    #test = json.load(open('./data/test.json'))
+    #test_df = pd.DataFrame(test).T
+    #test_df['prompt_id'] = test_df.index
+    #model = Model(test_df, gpt_key='...')
+    #print(model.pass_to_model())
+
+    # TESTING CODEHALU
     test = json.load(open('./data/test.json'))
     test_df = pd.DataFrame(test).T
     test_df['prompt_id'] = test_df.index
     model = Model(test_df, gpt_key='...')
-    print(model.pass_to_model())
-
-    # TESTING CODEHALU
-    # test = json.load(open('./data/test.json'))
-    # test_df = pd.DataFrame(test).T
-    # test_df['prompt_id'] = test_df.index
-    # model = Model(test_df, gpt_key='...')
-    # print(model.codehalu(test_df['prompt_id'].tolist(), 'gpt3.5'))
+    code_ids = pd.read_csv('code_ids.csv', index_col=0)['prompt_id'].apply(str).tolist()
+    print(model.codehalu(code_ids, 'gpt3.5'))

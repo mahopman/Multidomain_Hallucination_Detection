@@ -27,7 +27,7 @@ import erniebot
 erniebot_api_type = 'aistudio'
 erniebot_api_key = ''
 gen_api_key = ''
-openai_api_key = 'sk-proj-2Yk6jmSRb23hyK0vwwMeT3BlbkFJyePwNbsnKrIvgf7RzLKt'
+openai_api_key = '...'
 claude_api_key=''
 
 

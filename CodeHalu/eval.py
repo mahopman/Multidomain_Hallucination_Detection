@@ -164,9 +164,6 @@ def evaluate_generations(generations, samples,in_out, idx=None, debug=False):
                     curr_err = [{'name': 'Logic Breakdown', 'value': 'Logic Breakdown'}]
                 else:
                     curr_res,curr_err = check_correctness(sample, o, timeout=TIMEOUT, debug=debug)
-                    print('HERE')
-                    print('curr_res: ',curr_res)
-                    print('curr_err: ',curr_err)
                 
                 sample["input_output"] = original_input_output 
 
@@ -205,9 +202,10 @@ def eval(args):
     generation_file = args['generation_file']
     halu_type = args['halu_type']
     gen_file_basename = os.path.basename(generation_file)
+    if not os.path.exists(f'codehalu/results'):
+        os.makedirs(f'codehalu/results')
 
     generations,ori_datas,in_out = load_generation(generation_file)
-    print('in_out: ',in_out)
     
     results,errors = evaluate_generations(generations, problems,in_out)
 
@@ -242,7 +240,7 @@ def eval(args):
                             "code": problem["deal_response"], 
                             "error_type": 'Wrong logic'
                         },
-                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                with open(f'codehalu/results/{gen_file_basename}_data.json', 'a') as file:
                     json.dump(new_data, file)
                     file.write('\n') 
                 new_id += 1
@@ -258,7 +256,7 @@ def eval(args):
                             "code": problem["deal_response"], 
                             "error_type": None
                         },
-                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                with open(f'codehalu/results/{gen_file_basename}_data.json', 'a') as file:
                     json.dump(new_data, file)
                     file.write('\n') 
                 new_id += 1
@@ -276,7 +274,7 @@ def eval(args):
                             "code": problem["deal_response"],  
                             "error_type": 'Timeout'
                         },
-                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                with open(f'codehalu/results/{gen_file_basename}_data.json', 'a') as file:
                     json.dump(new_data, file)
                     file.write('\n') 
                 new_id += 1
@@ -291,7 +289,7 @@ def eval(args):
                             "code": problem["deal_response"], 
                             "error_type": errors[i][j][0][0]   
                         },
-                with open(f'{gen_file_basename}_data.json', 'a') as file: 
+                with open(f'codehalu/results/{gen_file_basename}_data.json', 'a') as file: 
                     json.dump(new_data, file)
                     file.write('\n') 
                 new_id += 1
@@ -321,10 +319,10 @@ def eval(args):
     print(halu_type)   
     print("percentage: ",halu_percentage)   
     
-    with open(f'{halu_type}_errors_dict.json', 'w') as json_file:
+    with open(f'codehalu/results/{gen_file_basename}_errors_dict.json', 'w') as json_file:
         json.dump(errors_dict, json_file, indent=4)
 
-    return halu_percentage
+    return {'halu_percentage': halu_percentage, 'total_count': len(ori_datas), 'halu_count': count}
 
 def parse_args():
     # Create the parser
@@ -348,6 +346,8 @@ def main(args):
     generation_file = args.generation_file
     halu_type = args.halu_type
     gen_file_basename = os.path.basename(generation_file)
+    if not os.path.exists('codehalu/results'):
+        os.makedirs('codehalu/results')
 
     generations,ori_datas,in_out = load_generation(generation_file)
     print('in_out: ',in_out)
@@ -385,7 +385,7 @@ def main(args):
                             "code": problem["deal_response"], 
                             "error_type": 'Wrong logic'
                         },
-                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                with open(f'codehalu/results/{gen_file_basename}_data.json', 'a') as file:
                     json.dump(new_data, file)
                     file.write('\n') 
                 new_id += 1
@@ -401,7 +401,7 @@ def main(args):
                             "code": problem["deal_response"], 
                             "error_type": None
                         },
-                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                with open(f'codehalu/results/{gen_file_basename}_data.json', 'a') as file:
                     json.dump(new_data, file)
                     file.write('\n') 
                 new_id += 1
@@ -419,7 +419,7 @@ def main(args):
                             "code": problem["deal_response"],  
                             "error_type": 'Timeout'
                         },
-                with open(f'{gen_file_basename}_data.json', 'a') as file:
+                with open(f'codehalu/results/{gen_file_basename}_data.json', 'a') as file:
                     json.dump(new_data, file)
                     file.write('\n') 
                 new_id += 1
@@ -434,7 +434,7 @@ def main(args):
                             "code": problem["deal_response"], 
                             "error_type": errors[i][j][0][0]   
                         },
-                with open(f'{gen_file_basename}_data.json', 'a') as file: 
+                with open(f'codehalu/results/{gen_file_basename}_data.json', 'a') as file: 
                     json.dump(new_data, file)
                     file.write('\n') 
                 new_id += 1
@@ -464,7 +464,7 @@ def main(args):
     print(halu_type)   
     print("percentage: ",halu_percentage)   
      
-    with open(f'{gen_file_basename}_errors_dict.json', 'w') as json_file:
+    with open(f'codehalu/results/{gen_file_basename}_errors_dict.json', 'w') as json_file:
         json.dump(errors_dict, json_file, indent=4)
     
   
