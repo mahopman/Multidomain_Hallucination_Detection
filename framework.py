@@ -240,7 +240,22 @@ class Model:
         # self.generate_halludetect_data(ids)
         prompts, labels = self.generate_halludetect_data(ids)
         model_choice = "GPT"  # Set the model choice you want to use
-        HDmain(prompts, labels, model)
+        metrics = HDmain(prompts, labels, model)
+
+        # Check if metrics is a dictionary or a list of dictionaries
+        if isinstance(metrics, dict):
+            metrics_df = pd.DataFrame([metrics])
+        elif isinstance(metrics, list):
+            metrics_df = pd.DataFrame(metrics)
+        else:
+            raise ValueError("Unsupported format for metrics")
+    
+        # Define the output file path
+        utput_file_path = 'halludetect_metrics.csv'
+    
+        # Save the metrics DataFrame to a CSV file
+        metrics_df.to_csv(output_file_path, index=False)
+
         return f'Processed with halludetect'
 
     def output_results(self, result: str) -> None:
