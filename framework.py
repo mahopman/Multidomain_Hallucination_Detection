@@ -44,7 +44,7 @@ class Model:
         self.dataset = dataset
         self.gpt_key = gpt_key
 
-    def generate_codehalu_data(self, ids: int) -> list[dict]:
+    def generate_codehalu_data(self, ids: pd.Series) -> list[dict]:
         code_prompts = self.dataset.loc[ids]
         codehalu_data = []
         for idx, _ in code_prompts.iterrows():
@@ -67,7 +67,7 @@ class Model:
                                                                  'starter_code']
                 codehalu_dict['url'] = code_prompts.loc[idx, 'url']
             except:
-                pass
+                continue
             codehalu_data.append(codehalu_dict)
 
         # Step 1: Group entries by halu_type
@@ -87,13 +87,23 @@ class Model:
             with open(filepath, 'w') as json_file:
                 json.dump(entries, json_file, indent=4)
 
-    def generate_felm_data(self, ids):
+    def generate_felm_data(self, ids: pd.Series):
+        felm_prompts = self.dataset.loc[ids]
+        if not os.path.exists('felm_eval_data.jsonl'):
+            with open('felm_eval_data.jsonl', 'w') as f:
+                for prompt in felm_prompts['prompts']:
+                    if prompt['domain'] in ['world_knowledge', 'science', 'writing_rec', 'reasoning', 'math']:
+                        json.dump(prompt, f)
+                        f.write('\n')
+        with open('felm_eval_data.jsonl', 'r', encoding='utf8') as f:
+            data = list(f)
+        return data
+
+    def generate_halludetect_data(self, ids: pd.Series):
+        halludetect_prompts = self.dataset.loc[ids]
         return
 
-    def generate_halludetect_data(self, ids):
-        return
-
-    def classify_text(self, text: str):
+    def classify_text(self, text):
         '''Takes an input string (ex: prompt) and uses BERT to return a category.'''
         # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         config = AutoConfig.from_pretrained(BERT_PATH)
@@ -123,7 +133,7 @@ class Model:
         return predicted_category
 
     def pass_to_model(self) -> None:
-        '''Call BERT to classify into the distinct topic categories as code, wk, st, rw, r, m, or other.
+        '''Call BERT to classify into the distinct topic categories as coding, wk, st, rw, r, m, or other.
         Loops over rows in dataframe, passing the cleaned_text to the appropriate model based on the row's category.'''
         self.dataset['cleaned_text'] = self.dataset['prompt'].apply(clean_text)
         self.dataset['category'] = self.dataset['cleaned_text'].apply(
@@ -135,6 +145,14 @@ class Model:
         code_ids = self.dataset[self.dataset['category']
                                 == 'coding']['prompt_id']
         halu_ids = self.dataset[self.dataset['category'] == 'world_knowledge']['prompt_id']
+        
+        print(f'Some IDs being passed to felm: {felm_ids.sample(3, random_state=42).to_list()}')
+        print(f'Some IDs being passed to codehalu: {code_ids.sample(3, random_state=42).to_list()}')
+        print(f'Some IDs being passed to halludetect: {halu_ids.sample(3, random_state=42).to_list()}')
+        
+        felm_ids.to_csv('felm_ids.csv')
+        code_ids.to_csv('code_ids.csv')
+        halu_ids.to_csv('halu_ids.csv')
 
         felm_results = self.felm(felm_ids)
         code_results = self.codehalu(code_ids)
@@ -148,7 +166,7 @@ class Model:
 
         self.output_results(results)
 
-    def codehalu(self, ids, model) -> str:
+    def codehalu(self, ids: pd.Series, model):
         self.generate_codehalu_data(ids)
         # List all files in the directory
         filenames = os.listdir('codehalu/data')
@@ -184,20 +202,8 @@ class Model:
 
         return results
 
-    def felm(self, ids):
-        # self.generate_felm_data(ids)
-        # move below into separate function
-        def convert_to_jsonl():
-            if not os.path.exists('felm_eval_data.jsonl'):
-                with open('felm_eval_data.jsonl', 'w') as f:
-                    for prompt in self.dataset['prompts']:
-                        json.dump(prompt, f)
-                        f.write('\n')
-            with open('felm_eval_data.jsonl', 'r', encoding='utf8') as f:
-                data = list(f)
-            return data
-
-        data = convert_to_jsonl()
+    def felm(self, ids: pd.Series):
+        data = self.generate_felm_data(ids)
 
         num_cons = 0
         # model should be a varible that is passed in
@@ -214,7 +220,7 @@ class Model:
 
         # I don't think a return is necessary as felm does it for us above
 
-    def halludetect(self, ids) -> str:
+    def halludetect(self, ids: pd.Series):
         self.generate_halludetect_data(ids)
         # call halludetect file
         return f'Processed with halludetect'
@@ -250,15 +256,15 @@ if __name__ == '__main__':
     # prompts.felm()
 
     # TESTING BERT
-    #test = json.load(open('./data/test.json'))
-    #test_df = pd.DataFrame(test).T
-    #test_df['prompt_id'] = test_df.index
-    #model = Model(test_df, gpt_key='...')
-    #print(model.pass_to_model())
-
-    # TESTING CODEHALU
     test = json.load(open('./data/test.json'))
     test_df = pd.DataFrame(test).T
     test_df['prompt_id'] = test_df.index
     model = Model(test_df, gpt_key='...')
-    print(model.codehalu(test_df['prompt_id'].tolist(), 'gpt3.5'))
+    print(model.pass_to_model())
+
+    # TESTING CODEHALU
+    # test = json.load(open('./data/test.json'))
+    # test_df = pd.DataFrame(test).T
+    # test_df['prompt_id'] = test_df.index
+    # model = Model(test_df, gpt_key='...')
+    # print(model.codehalu(test_df['prompt_id'].tolist(), 'gpt3.5'))
