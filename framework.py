@@ -239,7 +239,7 @@ class Model:
     def halludetect(self, ids: pd.Series, model):
         # self.generate_halludetect_data(ids)
         prompts, labels = self.generate_halludetect_data(ids)
-        model_choice = "GPT"  # Set the model choice you want to use
+        #model_choice = "GPT"  # Set the model choice you want to use
         metrics = HDmain(prompts, labels, model)
 
         # Check if metrics is a dictionary or a list of dictionaries
@@ -295,10 +295,33 @@ if __name__ == '__main__':
     #model = Model(test_df, gpt_key='...')
     #print(model.pass_to_model())
 
-    # TESTING CODEHALU
-    test = json.load(open('./data/test.json'))
-    test_df = pd.DataFrame(test).T
-    test_df['prompt_id'] = test_df.index
-    model = Model(test_df, gpt_key='...')
-    code_ids = pd.read_csv('code_ids.csv', index_col=0)['prompt_id'].apply(str).tolist()
-    print(model.codehalu(code_ids, 'gpt3.5'))
+    # # TESTING CODEHALU
+    # test = json.load(open('./data/test.json'))
+    # test_df = pd.DataFrame(test).T
+    # test_df['prompt_id'] = test_df.index
+    # model = Model(test_df, gpt_key='...')
+    # code_ids = pd.read_csv('code_ids.csv', index_col=0)['prompt_id'].apply(str).tolist()
+    # print(model.codehalu(code_ids, 'gpt3.5'))
+
+
+    # TESTING HALUDETECT
+    
+    model = Model(test_df)
+
+    # Load ids from hd_id_test.json
+    hd_id_test_path = './data/hd_id_test.json'
+    with open(hd_id_test_path, 'r') as file:
+        hd_ids = json.load(file)
+
+    # Convert hd_ids to pandas Series
+    hd_ids_series = pd.Series(hd_ids)
+
+    # Run halludetect method and print the result
+    output = model.halludetect(hd_ids_series, 'GPT')
+    
+    # Print the results to a separate .csv file in the same directory
+    output.to_csv('halludetect_results.csv', index=False)
+    print("Results have been saved to halludetect_results.csv")
+
+if __name__ == "__main__":
+    main()
