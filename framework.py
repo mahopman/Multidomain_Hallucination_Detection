@@ -3,6 +3,7 @@ import pandas as pd
 import felm.eval.eval as felm
 from CodeHalu.generation import generate
 from CodeHalu.eval import eval as codehalu
+from haludetect_true_false import HDmain
 import os
 import time
 import json
@@ -235,9 +236,10 @@ class Model:
 
         # I don't think a return is necessary as felm does it for us above
 
-    def halludetect(self, ids: pd.Series):
+    def halludetect(self, ids: pd.Series, model):
         self.generate_halludetect_data(ids)
         # call halludetect file
+        
         return f'Processed with halludetect'
 
     def output_results(self, result: str) -> None:
