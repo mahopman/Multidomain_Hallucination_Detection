@@ -36,7 +36,7 @@ def timeout_handler(signum, frame):
     print("alarm went off")
     #return
     raise TimeoutException
-signal.signal(signal.SIGALRM, timeout_handler)
+signal.signal(signal.SIGABRT, timeout_handler)
 timeout = 15  # seconds
 
 # used to capture stdout as a list

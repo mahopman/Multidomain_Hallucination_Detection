@@ -18,7 +18,7 @@ import transformers
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 from huggingface_hub import login
-import deepspeed
+#import deepspeed
 from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria, StoppingCriteriaList
 from typing import List 
 import anthropic

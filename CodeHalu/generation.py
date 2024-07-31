@@ -5,8 +5,8 @@ import json
 
 from tqdm import tqdm
  
-from codehalu.models import GPT4,GPT3_5, GEMINI_PRO,CodeLLaMA_7b,DeepSeekCoder,WizardCoder,StarCoder,MagicCoder,ChatGLM,Qwen,Wenxin,CodeGeeX, Gemma, Mixtral_8x_7B, Mixtral_7B, StarCoder2, Llama2, Claude3,Llama3 
-from codehalu.utils import load_problems
+from CodeHalu.models import GPT4,GPT3_5, GEMINI_PRO,CodeLLaMA_7b,DeepSeekCoder,WizardCoder,StarCoder,MagicCoder,ChatGLM,Qwen,Wenxin,CodeGeeX, Gemma, Mixtral_8x_7B, Mixtral_7B, StarCoder2, Llama2, Claude3,Llama3
+from CodeHalu.utils import load_problems
 
 from datasets import load_dataset
 import json

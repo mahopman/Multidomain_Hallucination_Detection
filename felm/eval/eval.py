@@ -173,6 +173,7 @@ def run(ori_data, model, method, num_cons, gpt_key):
             eval_prompt += b
         if method == 'retrieval_link':
             eval_prompt += "\nRerefence links: "
+            a = ""
             for ref_out in data["ref"]:
                 a += ref_out + '\n'
         if method == 'retrieval_content':
@@ -296,7 +297,7 @@ def compute_accuracy(domain, res):
         'TN,TP,FN,FP': (TN, TP, FN, FP),
         'P': TN/(TN+FN) if TN+FN != 0 else None,
         'R': TN/(TN+FP) if TN+FP != 0 else None,
-        'F1': 2*(TN/(TN+FP))*(TN/(TN+FN))/(TN/(TN+FP)+TN/(TN+FN)) if (TN+FP != 0 and TN+FN != 0) else None,
+        #'F1': 2*(TN/(TN+FP))*(TN/(TN+FN))/(TN/(TN+FP)+TN/(TN+FN)) if ((TN+FP != 0 and TN+FN != 0) or TN > 0) else None,
     }
 
 
@@ -353,12 +354,17 @@ if __name__ == '__main__':
     make_print_to_file(path='res/')
 
     args = parse_args()
+
+    print("args: ", args)
+
     if args.model == 'vicuna_30B':
         tokenizer = AutoTokenizer.from_pretrained("lmsys/vicuna-33b-v1.3")
         model_ = AutoModelForCausalLM.from_pretrained(
             "lmsys/vicuna-33b-v1.3", device_map="auto", offload_folder=r'offload/', offload_state_dict=True, torch_dtype=torch.float16, low_cpu_mem_usage=True)
     res = set()
     path = args.path
+
+    print("path:", path)
 
     with open(path, 'r', encoding='utf8') as json_file:
         data = list(json_file)
