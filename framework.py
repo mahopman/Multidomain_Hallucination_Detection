@@ -14,7 +14,7 @@ import torch
 from transformers import BertForSequenceClassification, BertTokenizer, AutoConfig
 from dotenv import load_dotenv
 
-TEST = False  # kind of a failsafe so I don't accidentally use api calls when I don't need to
+TEST = True  # kind of a failsafe so I don't accidentally use api calls when I don't need to
 
 BERT_PATH = 'bert-classifier'
 
@@ -90,12 +90,21 @@ class Model:
 
     def generate_felm_data(self, ids: pd.Series):
         felm_prompts = self.dataset.loc[ids]
-        if not os.path.exists('felm_eval_data.jsonl'):
-            with open('felm_eval_data.jsonl', 'w') as f:
-                for prompt in felm_prompts['prompts']:
-                    if prompt['domain'] in ['world_knowledge', 'science', 'writing_rec', 'reasoning', 'math']:
-                        json.dump(prompt, f)
+        #print("Felm Prompts: ", felm_prompts)
+        if os.path.exists('felm_eval_data.jsonl'):
+            with open('felm_eval_data.jsonl', 'w', encoding='utf8') as f:
+                for idx, prompt in felm_prompts.iterrows():
+                    #felm_dict = prompt
+                    try: 
+                        len(prompt["index"])
+                        columns = ["prompt", "domain", "response", "segmented_response", "index", "source", "labels", "comment", "type", "ref", "ref_contents"]
+                        felm_dict = {}
+                        for col in columns:
+                            felm_dict[col] = prompt[col]
+                        json.dump(felm_dict, f)
                         f.write('\n')
+                    except: 
+                        continue
         with open('felm_eval_data.jsonl', 'r', encoding='utf8') as f:
             data = list(f)
         return data
@@ -226,6 +235,7 @@ class Model:
         method = 'raw'
         api_key = self.gpt_key if TEST else None
 
+
         if not os.path.exists('res'):
             os.makedirs('res')
         felm.make_print_to_file(path='res/')
@@ -262,18 +272,30 @@ def parse_args():
 
 def main():
 
-    #args = parse_args()
-    #path = args.path if args.path else 'data\\eval_data.json'
+    args = parse_args()
+    path = args.path if args.path else 'data\\eval_data.json'
     # remove "else os.getenv('GPT_API_KEY')" before production
-    #gpt_key = args.gpt_key if args.gpt_key else os.getenv('GPT_API_KEY')
+    gpt_key = 'sk-proj-2Yk6jmSRb23hyK0vwwMeT3BlbkFJyePwNbsnKrIvgf7RzLKt' #args.gpt_key if args.gpt_key else os.getenv('GPT_API_KEY')
 
     #with open(path, 'r', encoding='utf8') as json_file:
     #    data = list(json_file)
-    #with open(path, 'r', encoding='utf8') as json_file:
-    #    data = json.load(json_file)
+    with open(path, 'r', encoding='utf8') as json_file:
+        data = json.load(json_file)
 
-    #prompts = Model(data, gpt_key=gpt_key)
-    # prompts.felm()
+    test = json.load(open('./data/test.json'))
+    test_df = pd.DataFrame(test).T
+    test_df['prompt_id'] = test_df.index
+
+
+    felm_ids = pd.read_csv('felm_ids.csv', index_col=0)['prompt_id'].apply(str).tolist()
+
+    prompts = Model(test_df, gpt_key=gpt_key)
+
+    #prompts.generate_felm_data(felm_ids)
+
+    prompts.felm(felm_ids)
+
+
 
     # TESTING BERT
     #test = json.load(open('./data/test.json'))
@@ -291,6 +313,7 @@ def main():
     # print(model.codehalu(code_ids, 'gpt3.5'))
 
     # TESTING HALUDETECT
+<<<<<<< Updated upstream
     # Hardcoded paths and model choice
     # data_path = './data/test.json'
     # model_choice = 'GPT'
@@ -321,6 +344,25 @@ def main():
     #     print("Results have been saved to halludetect")
     # else:
     #     print("No matching IDs found in the DataFrame.")
+=======
+    
+    #model = Model(test_df)
+
+    # Load ids from hd_id_test.json
+    #hd_id_test_path = './data/hd_id_test.json'
+    #with open(hd_id_test_path, 'r') as file:
+    #    hd_ids = json.load(file)
+
+    # Convert hd_ids to pandas Series
+    #hd_ids_series = pd.Series(hd_ids)
+
+    # Run halludetect method and print the result
+    #output = model.halludetect(hd_ids_series, 'GPT')
+    
+    # Print the results to a separate .csv file in the same directory
+    #output.to_csv('halludetect_results.csv', index=False)
+    #print("Results have been saved to halludetect_results.csv")
+>>>>>>> Stashed changes
 
 if __name__ == "__main__":
     main()
