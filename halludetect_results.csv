@@ -1,0 +1,2 @@
+{'accuracy': 0.4, 'precision': 0.4, 'recall': 1.0, 'f1': 0.5714285714285715, 'confusion_matrix': [[0, 6], [0, 4]], 'roc_auc': 0.5, 'precision_recall_auc': 0.7}
+Number of prompts: 50

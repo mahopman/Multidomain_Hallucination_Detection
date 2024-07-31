@@ -105,7 +105,6 @@ class Model:
         halludetect_data = []
         for idx, _ in halludetect_prompts.iterrows():
             halludetect_dict = {}
-            # use a try except because BERT is not 100% accurate and includes some data that would error out this code
             try:
                 halludetect_dict['statement'] = halludetect_prompts.loc[idx, 'prompt']
                 if halludetect_prompts.loc[idx, 'response'] == 'True':
@@ -115,9 +114,9 @@ class Model:
             except:
                 continue
             halludetect_data.append(halludetect_dict)
-
         df = pd.DataFrame.from_dict(halludetect_data)
-        return df['statement'].tolist(), df['label'].tolist()
+        return df['statement'], df['label']
+
 
     def classify_text(self, text):
         '''Takes an input string (ex: prompt) and uses BERT to return a category.'''
@@ -236,32 +235,20 @@ class Model:
 
         # I don't think a return is necessary as felm does it for us above
 
-    def halludetect(self, ids: pd.Series, model):
-        # self.generate_halludetect_data(ids)
+    def halludetect(self, ids: pd.Series, model_choice: str):
         prompts, labels = self.generate_halludetect_data(ids)
-        #model_choice = "GPT"  # Set the model choice you want to use
-        metrics = HDmain(prompts, labels, model)
+        metrics = HDmain(prompts, labels, model_choice)
 
-        # Check if metrics is a dictionary or a list of dictionaries
         if isinstance(metrics, dict):
             metrics_df = pd.DataFrame([metrics])
         elif isinstance(metrics, list):
             metrics_df = pd.DataFrame(metrics)
         else:
             raise ValueError("Unsupported format for metrics")
-    
-        # Define the output file path
-        utput_file_path = 'halludetect_metrics.csv'
-    
-        # Save the metrics DataFrame to a CSV file
+
+        output_file_path = 'halludetect_results.csv'
         metrics_df.to_csv(output_file_path, index=False)
-
-        return f'Processed with halludetect'
-
-    def output_results(self, result: str) -> None:
-        '''Format results into a readable console output.'''
-
-        print(result)
+        return 'Processed with halludetect'
 
 
 def parse_args():
@@ -273,7 +260,7 @@ def parse_args():
     return args
 
 
-if __name__ == '__main__':
+def main():
 
     #args = parse_args()
     #path = args.path if args.path else 'data\\eval_data.json'
@@ -303,25 +290,37 @@ if __name__ == '__main__':
     # code_ids = pd.read_csv('code_ids.csv', index_col=0)['prompt_id'].apply(str).tolist()
     # print(model.codehalu(code_ids, 'gpt3.5'))
 
-
     # TESTING HALUDETECT
-    
-    model = Model(test_df)
+    # Hardcoded paths and model choice
+    # data_path = './data/test.json'
+    # model_choice = 'GPT'
+    # gpt_key = 'KEY'
 
-    # Load ids from hd_id_test.json
-    hd_id_test_path = './data/hd_id_test.json'
-    with open(hd_id_test_path, 'r') as file:
-        hd_ids = json.load(file)
+    # # Load dataset
+    # with open(data_path, 'r', encoding='utf8') as json_file:
+    #     data = json.load(json_file)
 
-    # Convert hd_ids to pandas Series
-    hd_ids_series = pd.Series(hd_ids)
+    # df = pd.DataFrame.from_dict(data, orient='index')
+    # df['prompt_id'] = df.index.astype(int)  # Assuming each row is uniquely identifiable by its index
+    # df['prompt_id'] = df['prompt_id'].astype(int)
 
-    # Run halludetect method and print the result
-    output = model.halludetect(hd_ids_series, 'GPT')
-    
-    # Print the results to a separate .csv file in the same directory
-    output.to_csv('halludetect_results.csv', index=False)
-    print("Results have been saved to halludetect_results.csv")
+    # df.index = df.index.astype(int)
+
+    # model = Model(df, gpt_key=gpt_key)
+
+    # # Hardcoded ID file path
+    # hd_id_path = './halu_ids.csv'
+    # hd_ids_df = pd.read_csv(hd_id_path, header=None)
+    # hd_ids_series = pd.Series(hd_ids_df[0]).dropna().astype(int)
+
+    # # Check which IDs are in the DataFrame index
+    # matched_ids = hd_ids_series[hd_ids_series.isin(df.index)]
+
+    # if not matched_ids.empty:
+    #     output = model.halludetect(matched_ids, model_choice)
+    #     print("Results have been saved to halludetect")
+    # else:
+    #     print("No matching IDs found in the DataFrame.")
 
 if __name__ == "__main__":
     main()
