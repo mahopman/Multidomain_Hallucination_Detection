@@ -1,4 +1,0 @@
-
-.env
-*.pyc
-bert-classifier/*

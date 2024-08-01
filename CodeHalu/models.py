@@ -27,7 +27,7 @@ import erniebot
 erniebot_api_type = 'aistudio'
 erniebot_api_key = ''
 gen_api_key = ''
-openai_api_key = '...'
+openai_api_key = os.getenv("GPT_API_KEY")
 claude_api_key=''
 
 

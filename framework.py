@@ -1,29 +1,29 @@
 from nltk.corpus import stopwords
 import pandas as pd
 import felm.eval.eval as felm
-from CodeHalu.generation import generate
-from CodeHalu.eval import eval as codehalu
-from haludetect_true_false import HDmain
+from codehalu.generation import generate
+from codehalu.eval import eval as codehalu
+from halludetect.halludetect_true_false import HDmain
+from bert_classifier.bert import bert
 import os
 import time
 import json
 import argparse
-import phase1_bert
+import bert_classifier.bert as bert
 import nltk
 import torch
 from transformers import BertForSequenceClassification, BertTokenizer, AutoConfig
 from dotenv import load_dotenv
+from data.split_eval_data import split_data
 
-TEST = True  # kind of a failsafe so I don't accidentally use api calls when I don't need to
-
-BERT_PATH = 'bert-classifier'
+BERT_PATH = 'bert_classifier/bert-classifier'
 
 nltk.download('stopwords')
 sw = stopwords.words('english')
 
 load_dotenv()
 
-category_to_id = json.load(open('./data/category_to_id.json'))
+category_to_id = json.load(open('/data/category_to_id.json'))
 id_to_category = {v: k for k, v in category_to_id.items()}
 
 
@@ -105,7 +105,7 @@ class Model:
                         f.write('\n')
                     except: 
                         continue
-        with open('felm_eval_data.jsonl', 'r', encoding='utf8') as f:
+        with open('felm/felm_eval_data.jsonl', 'r', encoding='utf8') as f:
             data = list(f)
         return data
 
@@ -170,10 +170,6 @@ class Model:
                                 == 'coding']['prompt_id']
         halu_ids = self.dataset[self.dataset['category'] == 'world_knowledge']['prompt_id']
         
-        print(f'Some IDs being passed to felm: {felm_ids.sample(3, random_state=42).to_list()}')
-        print(f'Some IDs being passed to codehalu: {code_ids.sample(3, random_state=42).to_list()}')
-        print(f'Some IDs being passed to halludetect: {halu_ids.sample(3, random_state=42).to_list()}')
-        
         felm_ids.to_csv('felm_ids.csv')
         code_ids.to_csv('code_ids.csv')
         halu_ids.to_csv('halu_ids.csv')
@@ -233,12 +229,12 @@ class Model:
         # model should be a varible that is passed in
         model = 'gpt-3.5-turbo'
         method = 'raw'
-        api_key = self.gpt_key if TEST else None
+        api_key = self.gpt_key 
 
 
-        if not os.path.exists('res'):
-            os.makedirs('res')
-        felm.make_print_to_file(path='res/')
+        if not os.path.exists('felm/results'):
+            os.makedirs('felm/results')
+        felm.make_print_to_file(path='felm/results/')
 
         result = felm.run(data, model, method, num_cons, api_key)
         felm.print_saveresult(data, result, method, model)
@@ -256,14 +252,13 @@ class Model:
         else:
             raise ValueError("Unsupported format for metrics")
 
-        output_file_path = 'halludetect_results.csv'
+        output_file_path = 'halludetect/halludetect_results.csv'
         metrics_df.to_csv(output_file_path, index=False)
         return 'Processed with halludetect'
 
 
 def parse_args():
     parse = argparse.ArgumentParser()
-    parse.add_argument('--path', type=str, help='dataset path')
     parse.add_argument('--gpt_key', type=str, help='for gpt-3.5-turbo')
 
     args = parse.parse_args()
@@ -271,98 +266,25 @@ def parse_args():
 
 
 def main():
-
     args = parse_args()
-    path = args.path if args.path else 'data\\eval_data.json'
-    # remove "else os.getenv('GPT_API_KEY')" before production
-    gpt_key = 'sk-proj-2Yk6jmSRb23hyK0vwwMeT3BlbkFJyePwNbsnKrIvgf7RzLKt' #args.gpt_key if args.gpt_key else os.getenv('GPT_API_KEY')
 
-    #with open(path, 'r', encoding='utf8') as json_file:
-    #    data = list(json_file)
-    with open(path, 'r', encoding='utf8') as json_file:
-        data = json.load(json_file)
+    os.environ['GPT_API_KEY'] = args.gpt_key
+    gpt_key = args.gpt_key if args.gpt_key else os.getenv('GPT_API_KEY')
 
+    # split data into train and test
+    split_data()
+
+    # train bert
+    bert()
+
+    # load testing dataset
     test = json.load(open('./data/test.json'))
     test_df = pd.DataFrame(test).T
     test_df['prompt_id'] = test_df.index
 
-
-    felm_ids = pd.read_csv('felm_ids.csv', index_col=0)['prompt_id'].apply(str).tolist()
-
-    prompts = Model(test_df, gpt_key=gpt_key)
-
-    #prompts.generate_felm_data(felm_ids)
-
-    prompts.felm(felm_ids)
-
-
-
-    # TESTING BERT
-    #test = json.load(open('./data/test.json'))
-    #test_df = pd.DataFrame(test).T
-    #test_df['prompt_id'] = test_df.index
-    #model = Model(test_df, gpt_key='...')
-    #print(model.pass_to_model())
-
-    # # TESTING CODEHALU
-    # test = json.load(open('./data/test.json'))
-    # test_df = pd.DataFrame(test).T
-    # test_df['prompt_id'] = test_df.index
-    # model = Model(test_df, gpt_key='...')
-    # code_ids = pd.read_csv('code_ids.csv', index_col=0)['prompt_id'].apply(str).tolist()
-    # print(model.codehalu(code_ids, 'gpt3.5'))
-
-    # TESTING HALUDETECT
-<<<<<<< Updated upstream
-    # Hardcoded paths and model choice
-    # data_path = './data/test.json'
-    # model_choice = 'GPT'
-    # gpt_key = 'KEY'
-
-    # # Load dataset
-    # with open(data_path, 'r', encoding='utf8') as json_file:
-    #     data = json.load(json_file)
-
-    # df = pd.DataFrame.from_dict(data, orient='index')
-    # df['prompt_id'] = df.index.astype(int)  # Assuming each row is uniquely identifiable by its index
-    # df['prompt_id'] = df['prompt_id'].astype(int)
-
-    # df.index = df.index.astype(int)
-
-    # model = Model(df, gpt_key=gpt_key)
-
-    # # Hardcoded ID file path
-    # hd_id_path = './halu_ids.csv'
-    # hd_ids_df = pd.read_csv(hd_id_path, header=None)
-    # hd_ids_series = pd.Series(hd_ids_df[0]).dropna().astype(int)
-
-    # # Check which IDs are in the DataFrame index
-    # matched_ids = hd_ids_series[hd_ids_series.isin(df.index)]
-
-    # if not matched_ids.empty:
-    #     output = model.halludetect(matched_ids, model_choice)
-    #     print("Results have been saved to halludetect")
-    # else:
-    #     print("No matching IDs found in the DataFrame.")
-=======
-    
-    #model = Model(test_df)
-
-    # Load ids from hd_id_test.json
-    #hd_id_test_path = './data/hd_id_test.json'
-    #with open(hd_id_test_path, 'r') as file:
-    #    hd_ids = json.load(file)
-
-    # Convert hd_ids to pandas Series
-    #hd_ids_series = pd.Series(hd_ids)
-
-    # Run halludetect method and print the result
-    #output = model.halludetect(hd_ids_series, 'GPT')
-    
-    # Print the results to a separate .csv file in the same directory
-    #output.to_csv('halludetect_results.csv', index=False)
-    #print("Results have been saved to halludetect_results.csv")
->>>>>>> Stashed changes
+    # call pipeline
+    model = Model(test_df, gpt_key=gpt_key)
+    model.pass_to_model()
 
 if __name__ == "__main__":
     main()

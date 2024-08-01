@@ -1,5 +1,5 @@
 import argparse
-from CodeHalu.testing_utils import run_test
+from codehalu.testing_utils import run_test
 import json, os
 import multiprocessing
 import numpy as np
@@ -10,7 +10,7 @@ sys.path.append('.')
 from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria, StoppingCriteriaList   
 from tqdm import tqdm
 from datasets import load_dataset
-from CodeHalu.utils import load_problems
+from codehalu.utils import load_problems
 
 # Set TOKENIZERS_PARALLELISM to false at the very start
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
